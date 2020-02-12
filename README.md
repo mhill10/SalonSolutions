@@ -81,3 +81,10 @@ Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/
 * Independent Research Topic/s
   * CI tools in AWS
   * Materialize
+  * Javascript ES
+* Hibernate Validation
+    * Hibernate Search
+  * Project Lombok to eliminate boilerplate code like getters/setters/equals
+  * Unit Testing
+    * JUnit tests to achieve 80%+ code coverage
+  * IDE: IntelliJ IDEA
