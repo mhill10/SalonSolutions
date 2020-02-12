@@ -1,19 +1,18 @@
 # Project Plan
-Week 3
-
-    Create project repository on GitHub
-    Create project structure in intellij and push
-    Add link to list of indie projects in student repo.
-    Complete Problem Statement
-    Determine possible Web Services or APIs to use
-    List technologies, versions and how they will be used
-    Weekly journal entry
-    Write project plan
-    Document application flow in text and pictures - I'll use wireframes that have clickable links for the screen design. Use Balsamiq?
-    Triple-check for Checkpoint 1: Problem statement, project plan, screen design and time log pushed to GitHub.
 
 Week 4
+    Complete Problem Statement
+    Create project repository on GitHub
+    Create project structure in intellij and push
+    Write project plan
+    List technologies, versions and how they will be used... More TBD
+    Document application flow in text and pictures.
+    Problem statement, project plan, screen design and time log pushed to GitHub.
+    Add link to list of indie projects in student repo.
 
+Week 5
+    Determine possible Web Services or APIs to use
+    Weekly journal entry
     Complete database design
     Create the database and user table
     Create the user entity class and annotate for hibernate
@@ -24,9 +23,6 @@ Week 4
     Set up logging
     Create class uml diagram
     Prepare for Week 5 peer design/code review
-
-Week 5
-
     Create the template for all jsps using bootstrap or materialize
     Weekly journal entry
     Add the role table
