@@ -53,7 +53,7 @@ Rosy: https://www.rosysalonsoftware.com/?utm_source=Capterra&utm_medium=Salon&ut
 
 Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/aa9df7b72
 
-### Project Technologies/Techniques
+### Project Technologies/Techniques (Borrowed from Paula Waite's Indie Project Example, As Specifics TBD)
 * Security/Authentication
   * Tomcat's JDBC Realm Authentication
   * Admin role: create/read/update/delete (crud) of all data
