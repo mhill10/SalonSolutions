@@ -3,33 +3,36 @@
 
 ### Sign up
 
-As a new user I want to create an account so that I can add or edit trails and reports.
+As a new client I want to create an account so that I can add or edit my own salon reservations.
 
 ### Sign In
 
-As a registered user I want to log in so that I can add or edit trails and reports.
+As a registered client I want to log in so that I can view my upcoming reservations/services, and view service history.
 
-### Find Trails
+### Find User
 
-As any user I want to be able find trails by name or location so that I can learn more about trails and its conditions that I may want to ride.
+As an Owner and Stylist, I want to be able to add clients, schedule reservations, add services to my offerings, and price accordingly.
 
-### View Trail Report
+### View All Reservations
 
-As any user, I want to be able to read a trail report for a given trail so that I can check out the conditions of that trail.
+As a Salon Owner, I want to be able to view and edit all upcoming reservations
 
-### View Trail
+### View All users
 
-As any user, I want to be able to search for trails by name or location so that I could choose an appropriate trail to ride.
+As a Salon Owner, I want to be able to add or edit any user, Employee or Client
 
 ### About
 
-As a user I want to find out more information about this site so that I can make donations or contact the admin.
+As a client, I want to find out more information about this Salon Offerings and Team Members, so that I can make reservations accordingly, based on team member specialties/qualifications
 
-### Add Trail Report
+### Add Salon Stylist/Employee
 
-As a registered user, I want to be able to add trail reports for a trail so that others will know the current conditions.
+As a Salon Owner, I want to be able to add and edit the user information and employment status of a Salon Employee
 
-### Add Trail
+### Add Service(s)/ Pricing/ Timing
 
-As a registered user, I want to be able to add a new trail so that others can learn about the trail and add trail reports for it.
+As a Salon Owner, I want to add services, pricing, and timing information for each Stylist, based on skill-level and market demand.
 
+### Financial Goals
+
+As a Salon Owner, I want to be able to input Financial Goals that link pricing/profit of certain services and suggest appointments strategically, to maximize company goals.
