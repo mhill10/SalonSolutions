@@ -82,7 +82,7 @@ Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/
   * CI tools in AWS
   * Materialize
   * Javascript ES
-* Hibernate Validation
+* git Hibernate Validation
     * Hibernate Search
   * Project Lombok to eliminate boilerplate code like getters/setters/equals
   * Unit Testing
