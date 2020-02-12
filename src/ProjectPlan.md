@@ -103,7 +103,6 @@ Week 12 - Team project due
 Week 13
 
     Weekly journal entry
-    Complete todos identified in week 12
     Prepare for week 13 peer code reviews
     Code quality check
     Review rubric to make sure I'm on target
@@ -115,7 +114,6 @@ Week 14
 
 Week 15
 
-    Final Presentation
     Create video
     Finalize all documentation
     Code quality check
@@ -124,3 +122,4 @@ Week 16
 
     Weekly journal entry
     Final touches before code complete
+    Project Presentation 2:00 pm, Monday, May 11, 2020
