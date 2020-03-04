@@ -1,0 +1,192 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red109\green109\blue109;\red32\green32\blue32;\red191\green100\blue38;
+\red153\green168\blue186;\red88\green118\blue71;\red254\green187\blue91;\red133\green96\blue154;\red86\green132\blue173;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c74902\c39216\c14902;
+\csgenericrgb\c60000\c65882\c72941;\csgenericrgb\c34510\c46275\c27843;\csgenericrgb\c99608\c73333\c35686;\csgenericrgb\c52157\c37647\c60392;\csgenericrgb\c33725\c51765\c67843;
+}
+\margl1440\margr1440\vieww19380\viewh16920\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 -- Current Database: `SalonSolutions`\
+--\
+\
+\cf4 CREATE DATABASE \cf2 /*!32312 \cf4 IF NOT EXISTS\cf2 */ \cf5 `SalonSolutionsTest` \cf2 /*!40100 \cf4 DEFAULT CHARACTER SET \cf5 utf8mb4 \cf4 COLLATE \cf5 utf8mb4_0900_ai_ci \cf2 */ /*!80016 \cf4 DEFAULT ENCRYPTION\cf5 =\cf6 'N' \cf2 */\cf4 ;\
+\
+USE \cf5 `SalonSolutionsTest`\cf4 ;\
+\
+\cf2 --\
+-- Table structure for table `allServices`\
+--\
+\
+\cf4 DROP TABLE IF EXISTS \cf5 `allServices`\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 @saved_cs_client     = @@character_set_client \cf2 */\cf4 ;\
+\cf2 /*!50503 \cf4 SET \cf5 character_set_client = \cf7 utf8mb4 \cf2 */\cf4 ;\
+CREATE TABLE \cf5 `allServices` (\
+  \cf8 `serviceId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL AUTO_INCREMENT,\
+  \cf8 `serviceName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `serviceDescription` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  PRIMARY KEY \cf5 (\cf8 `serviceId`\cf5 )\
+) \cf4 ENGINE\cf5 =InnoDB \cf4 DEFAULT CHARSET\cf5 =utf8mb4 \cf4 COLLATE\cf5 =utf8mb4_0900_ai_ci\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 character_set_client = @saved_cs_client \cf2 */\cf4 ;\
+\
+\cf2 --\
+-- Dumping data for table `allServices`\
+--\
+\
+\cf4 LOCK TABLES \cf5 `allServices` \cf4 WRITE;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `allServices` \cf4 DISABLE KEYS \cf2 */\cf4 ;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `allServices` \cf4 ENABLE KEYS \cf2 */\cf4 ;\
+UNLOCK TABLES;\
+\
+\cf2 --\
+-- Table structure for table `guestUser`\
+--\
+\
+\cf4 DROP TABLE IF EXISTS \cf5 `guestUser`\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 @saved_cs_client     = @@character_set_client \cf2 */\cf4 ;\
+\cf2 /*!50503 \cf4 SET \cf5 character_set_client = \cf7 utf8mb4 \cf2 */\cf4 ;\
+CREATE TABLE \cf5 `guestUser` (\
+  \cf8 `guestId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL AUTO_INCREMENT,\
+  \cf8 `guestEmailAddress` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `guestPassword` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `guestFirstName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 NOT NULL,\
+  \cf8 `guestLastName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 NOT NULL,\
+  \cf8 `guestStreetAddress` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `guestCity` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `guestState` \cf4 varchar\cf5 (\cf9 2\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `guestZip` \cf4 varchar\cf5 (\cf9 5\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `guestProfilePic` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  PRIMARY KEY \cf5 (\cf8 `guestId`\cf5 )\cf4 ,\
+  UNIQUE KEY \cf5 `guestEmailAddress` (\cf8 `guestEmailAddress`\cf5 )\
+) \cf4 ENGINE\cf5 =InnoDB \cf4 DEFAULT CHARSET\cf5 =utf8mb4 \cf4 COLLATE\cf5 =utf8mb4_0900_ai_ci\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 character_set_client = @saved_cs_client \cf2 */\cf4 ;\
+\
+\cf2 --\
+-- Dumping data for table `guestUser`\
+--\
+\
+\cf4 LOCK TABLES \cf5 `guestUser` \cf4 WRITE;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `guestUser` \cf4 DISABLE KEYS \cf2 */\cf4 ;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `guestUser` \cf4 ENABLE KEYS \cf2 */\cf4 ;\
+UNLOCK TABLES;\
+\
+\cf2 --\
+-- Table structure for table `proServices`\
+--\
+\
+\cf4 DROP TABLE IF EXISTS \cf5 `proServices`\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 @saved_cs_client     = @@character_set_client \cf2 */\cf4 ;\
+\cf2 /*!50503 \cf4 SET \cf5 character_set_client = \cf7 utf8mb4 \cf2 */\cf4 ;\
+CREATE TABLE \cf5 `proServices` (\
+  \cf8 `proServiceId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL AUTO_INCREMENT,\
+  \cf8 `professionalId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL,\
+  \cf8 `allServiceId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL,\
+  \cf8 `serviceDefaultStartDuration` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `serviceDefaultProcessDuration` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `serviceDefaultEndDuration` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 DEFAULT NULL,\
+  PRIMARY KEY \cf5 (\cf8 `proServiceId`\cf5 )\cf4 ,\
+  KEY \cf5 `professionalId` (\cf8 `professionalId`\cf5 )\cf4 ,\
+  KEY \cf5 `allServiceId` (\cf8 `allServiceId`\cf5 )\cf4 ,\
+  CONSTRAINT \cf5 `proservices_ibfk_1` \cf4 FOREIGN KEY \cf5 (\cf8 `professionalId`\cf5 ) \cf4 REFERENCES \cf5 `prouser` (\cf8 `proId`\cf5 ) \cf4 ON DELETE CASCADE,\
+  CONSTRAINT \cf5 `proservices_ibfk_2` \cf4 FOREIGN KEY \cf5 (\cf8 `allServiceId`\cf5 ) \cf4 REFERENCES \cf5 `allservices` (\cf8 `serviceId`\cf5 ) \cf4 ON DELETE CASCADE\
+\cf5 ) \cf4 ENGINE\cf5 =InnoDB \cf4 DEFAULT CHARSET\cf5 =utf8mb4 \cf4 COLLATE\cf5 =utf8mb4_0900_ai_ci\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 character_set_client = @saved_cs_client \cf2 */\cf4 ;\
+\
+\cf2 --\
+-- Dumping data for table `proServices`\
+--\
+\
+\cf4 LOCK TABLES \cf5 `proServices` \cf4 WRITE;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `proServices` \cf4 DISABLE KEYS \cf2 */\cf4 ;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `proServices` \cf4 ENABLE KEYS \cf2 */\cf4 ;\
+UNLOCK TABLES;\
+\
+\cf2 --\
+-- Table structure for table `proUser`\
+--\
+\
+\cf4 DROP TABLE IF EXISTS \cf5 `proUser`\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 @saved_cs_client     = @@character_set_client \cf2 */\cf4 ;\
+\cf2 /*!50503 \cf4 SET \cf5 character_set_client = \cf7 utf8mb4 \cf2 */\cf4 ;\
+CREATE TABLE \cf5 `proUser` (\
+  \cf8 `proId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL AUTO_INCREMENT,\
+  \cf8 `proEmail` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `proPassword` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `proDisplayName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `proFirstName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `proLastName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `proProfilePic` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  PRIMARY KEY \cf5 (\cf8 `proId`\cf5 )\cf4 ,\
+  UNIQUE KEY \cf5 `proEmail` (\cf8 `proEmail`\cf5 )\
+) \cf4 ENGINE\cf5 =InnoDB \cf4 DEFAULT CHARSET\cf5 =utf8mb4 \cf4 COLLATE\cf5 =utf8mb4_0900_ai_ci\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 character_set_client = @saved_cs_client \cf2 */\cf4 ;\
+\
+\cf2 --\
+-- Dumping data for table `proUser`\
+--\
+\
+\cf4 LOCK TABLES \cf5 `proUser` \cf4 WRITE;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `proUser` \cf4 DISABLE KEYS \cf2 */\cf4 ;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `proUser` \cf4 ENABLE KEYS \cf2 */\cf4 ;\
+UNLOCK TABLES;\
+\
+\cf2 --\
+-- Table structure for table `reservationInfo`\
+--\
+\
+\cf4 DROP TABLE IF EXISTS \cf5 `reservationInfo`\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 @saved_cs_client     = @@character_set_client \cf2 */\cf4 ;\
+\cf2 /*!50503 \cf4 SET \cf5 character_set_client = \cf7 utf8mb4 \cf2 */\cf4 ;\
+CREATE TABLE \cf5 `reservationInfo` (\
+  \cf8 `resId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL AUTO_INCREMENT,\
+  \cf8 `professionalId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL,\
+  \cf8 `resGuestId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL,\
+  \cf8 `resServiceId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL,\
+  \cf8 `resDateTime` \cf4 datetime DEFAULT NULL,\
+  PRIMARY KEY \cf5 (\cf8 `resId`\cf5 )\cf4 ,\
+  KEY \cf5 `professionalId` (\cf8 `professionalId`\cf5 )\cf4 ,\
+  KEY \cf5 `resGuestId` (\cf8 `resGuestId`\cf5 )\cf4 ,\
+  KEY \cf5 `resServiceId` (\cf8 `resServiceId`\cf5 )\cf4 ,\
+  CONSTRAINT \cf5 `reservationinfo_ibfk_1` \cf4 FOREIGN KEY \cf5 (\cf8 `professionalId`\cf5 ) \cf4 REFERENCES \cf5 `prouser` (\cf8 `proId`\cf5 ) \cf4 ON DELETE CASCADE,\
+  CONSTRAINT \cf5 `reservationinfo_ibfk_2` \cf4 FOREIGN KEY \cf5 (\cf8 `resGuestId`\cf5 ) \cf4 REFERENCES \cf5 `guestuser` (\cf8 `guestId`\cf5 ) \cf4 ON DELETE CASCADE,\
+  CONSTRAINT \cf5 `reservationinfo_ibfk_3` \cf4 FOREIGN KEY \cf5 (\cf8 `resServiceId`\cf5 ) \cf4 REFERENCES \cf5 `proservices` (\cf8 `proServiceId`\cf5 ) \cf4 ON DELETE CASCADE\
+\cf5 ) \cf4 ENGINE\cf5 =InnoDB \cf4 DEFAULT CHARSET\cf5 =utf8mb4 \cf4 COLLATE\cf5 =utf8mb4_0900_ai_ci\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 character_set_client = @saved_cs_client \cf2 */\cf4 ;\
+\
+\cf2 --\
+-- Dumping data for table `reservationInfo`\
+--\
+\
+\cf4 LOCK TABLES \cf5 `reservationInfo` \cf4 WRITE;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `reservationInfo` \cf4 DISABLE KEYS \cf2 */\cf4 ;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `reservationInfo` \cf4 ENABLE KEYS \cf2 */\cf4 ;\
+UNLOCK TABLES;\
+\
+\cf2 --\
+-- Table structure for table `retailProducts`\
+--\
+\
+\cf4 DROP TABLE IF EXISTS \cf5 `retailProducts`\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 @saved_cs_client     = @@character_set_client \cf2 */\cf4 ;\
+\cf2 /*!50503 \cf4 SET \cf5 character_set_client = \cf7 utf8mb4 \cf2 */\cf4 ;\
+CREATE TABLE \cf5 `retailProducts` (\
+  \cf8 `productId` \cf4 int\cf5 (\cf9 11\cf5 ) \cf4 NOT NULL AUTO_INCREMENT,\
+  \cf8 `productName` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  \cf8 `productCost` \cf4 decimal\cf5 (\cf9 10\cf4 ,\cf9 2\cf5 ) \cf4 NOT NULL,\
+  \cf8 `productSalePrice` \cf4 decimal\cf5 (\cf9 10\cf4 ,\cf9 2\cf5 ) \cf4 NOT NULL,\
+  \cf8 `productDescription` \cf4 varchar\cf5 (\cf9 255\cf5 ) \cf4 DEFAULT NULL,\
+  PRIMARY KEY \cf5 (\cf8 `productId`\cf5 )\
+) \cf4 ENGINE\cf5 =InnoDB \cf4 DEFAULT CHARSET\cf5 =utf8mb4 \cf4 COLLATE\cf5 =utf8mb4_0900_ai_ci\cf4 ;\
+\cf2 /*!40101 \cf4 SET \cf5 character_set_client = @saved_cs_client \cf2 */\cf4 ;\
+\
+\cf2 --\
+-- Dumping data for table `retailProducts`\
+--\
+\
+\cf4 LOCK TABLES \cf5 `retailProducts` \cf4 WRITE;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `retailProducts` \cf4 DISABLE KEYS \cf2 */\cf4 ;\
+\cf2 /*!40000 \cf4 ALTER TABLE \cf5 `retailProducts` \cf4 ENABLE KEYS \cf2 */\cf4 ;\
+UNLOCK TABLES;\
+}

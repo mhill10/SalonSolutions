@@ -1,25 +1,41 @@
 package edu.matc.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 /**
  * A class to represent a guest user
  *
  * @author mhill
  */
-
+@Entity(name="GuestUser")
+@Table(name="guestUser")
 public class GuestUser {
 
     // Declare Class Instance Variables
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int guestUserId;
+    @Column(name = "guestEmailAddress")
     private String guestEmailAddress;
+    @Column(name = "guestPassword")
     private String guestPassword;
+    @Column(name = "guestFirstName")
     private String guestFirstName;
+    @Column(name = "guestLastName")
     private String guestLastName;
+    @Column(name = "guestStreetAddress")
     private String guestStreetAddress;
+    @Column(name = "guestCity")
     private String guestCity;
+    @Column(name = "guestState")
     private String guestState;
+    @Column(name = "guestZipCode")
     private String guestZipCode;
+    @Column(name = "guestProfilePic")
     private String guestProfilePic;
 
 
