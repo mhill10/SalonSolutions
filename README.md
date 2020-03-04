@@ -55,6 +55,8 @@ Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/
 
 ### Project Technologies/Techniques (Borrowed from Paula Waite's Indie Project Example, As Specifics TBD)
 * Security/Authentication
+* Java Mail API
+
   * Tomcat's JDBC Realm Authentication
   * Admin role: create/read/update/delete (crud) of all data
   * User role: create trail, create trail report, edit data they have entered previously
