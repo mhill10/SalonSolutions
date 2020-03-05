@@ -5,10 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GuestUserTest {
+class UserTest {
 
     @BeforeEach
     void setUp() {
+    }
+
+    @Test
+    void getUserId() {
     }
 
     @Test

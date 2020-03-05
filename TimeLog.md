@@ -14,3 +14,4 @@
 | 3/01/20 | Watched Week 6 Videos and attempted Week 6 Exercise - Blocker with Security Groups Inbound & Outbound on Port 22 | 2.5 |  |
 | 3/02/20 | Generated Peer Review Feedback for ZMarcus and KPalese Indie Projects | 1.5 |  |
 | 3/04/20 | Prepared for Indie Project Checkpoint #2 - Reevaluate MVP, per Peer Review and instructor Feedback, Determine and Implement Database Design, along with Log4J and Hibernate| 5 |  |
+| 3/04/20 | Implemented Indie Project Checkpoint #2 suggestions, per instructor feedback | 4.5 |  |

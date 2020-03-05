@@ -1,7 +1,7 @@
 package edu.matc.controller;
 
 
-import edu.matc.persistence.GuestUserData;
+import edu.matc.persistence.UserData;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * a simple servlet to search for guest users
+ * a simple servlet to search for salon users
  * @author mhill
  *
  */
 @WebServlet(
-        urlPatterns = {"/searchGuests"}
+        urlPatterns = {"/searchSalons"}
 )
-public class SearchGuestUsers extends HttpServlet {
+public class SearchUsers extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        GuestUserData guestUserData  = new GuestUserData();
+        UserData userData  = new UserData();
         if (req.getParameter("submit").equals("search")) {
-            req.setAttribute("users", guestUserData.getGuestUsersByLastName(req.getParameter("searchTerm")));
+            req.setAttribute("users", userData.getUsersByLastName(req.getParameter("searchTerm")));
         } else {
-            req.setAttribute("users", guestUserData.getAllGuestUsers());
+            req.setAttribute("users", userData.getAllUsers());
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("/results.jsp");
         dispatcher.forward(req, resp);

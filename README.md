@@ -16,7 +16,7 @@ Hairstylists" Salon model.
 For example, major players in this arena include Envision and Rosy, the desktop versions of which
 are not priced within reach for many small, one-person Salon operations. Furthermore, the slightly more
 affordable "Cloud" versions showcase lackluster performance and user experience for Stylists and
-Salon Guests alike, especially on mobile devices.  This is often because such solutions emanate from
+Salon Salons alike, especially on mobile devices.  This is often because such solutions emanate from
 a "one size fits all" applications that are marketed to not only beauty salons, but spas, yoga studios,
 fitness centers, massage parlors, and other business that, although similar in structure, are different
 enough to make the user experience feel "clunky" and under-served.  Moreover, feature requests from
@@ -26,8 +26,8 @@ to the web (which can lead to unwanted and potentially dangerous attention).
 
 Lastly, these softwares, although they may help with scheduling and financial forecasting, are not
 structured in a way to maximally promote the financial goals of the Salon Owners/Stylists.  Ideally, such
-software would guide would-be Salon Guests to select appointment times that not only are convenient for said
-guest, but that also serve to strategically benefit the stylists earning potential that day (per preferences/goals
+software would guide would-be Salon Salons to select appointment times that not only are convenient for said
+salon, but that also serve to strategically benefit the stylists earning potential that day (per preferences/goals
 specified in the back-end of the application).
 
 For example, if the most lucrative service a stylist offers is a "Foil-Color-Cut" which takes a
@@ -40,12 +40,12 @@ Salon Owner and Stylist are empowered to maximize their earnings potential while
 best efforts to meet all client needs and requests, but at times that make sense for the Salon's schedule
 as well as the client's schedule.
 
-Stretch Goal: Lastly, Stylists need effective ways to communicate lessons via PDF and Video to their guests, to help
-keep them looking their best between visits, as well as ways to track what said guests are saying about them on
-social media/keep tabs on how a guest's look changes between Salon visits via the guest's social media
-posts, so that a stylist might better advise on what to do about outgrowth, etc before a guest's next
+Stretch Goal: Lastly, Stylists need effective ways to communicate lessons via PDF and Video to their salons, to help
+keep them looking their best between visits, as well as ways to track what said salons are saying about them on
+social media/keep tabs on how a salon's look changes between Salon visits via the salon's social media
+posts, so that a stylist might better advise on what to do about outgrowth, etc before a salon's next
 appointment.  Seems that Facebook/Instagram/Google-YouTube integration of various levels of complexity might be
-particularly advantageous for this purpose, as well as to make logging-in and booking appointments easier for guests.
+particularly advantageous for this purpose, as well as to make logging-in and booking appointments easier for salons.
 
 I propose to create a web-based, Java 8 application that serves the purposes outlined above.
 

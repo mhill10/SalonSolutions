@@ -1,7 +1,7 @@
 package edu.matc.persistence;
 
 import com.mysql.cj.xdevapi.SessionFactory;
-import edu.matc.entity.GuestUser;
+import edu.matc.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class GuestUserDao {
+public class UserDao {
 
     // Add logging to this class
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -19,17 +19,17 @@ public class GuestUserDao {
 
 
     /**
- * Gets all GuestUsers
+ * Gets all Users
  *
- * @return all guest users
+ * @return all salon users
  */
-public List<GuestUser> getAllGuestUsers() {
+public List<User> getAllUsers() {
 
     Session session  = sessionFactory.openSession();
     CriteriaBuilder builder = session.getCriteriaBuilder();
-    CriteriaQuery<GuestUser> query = builder.createQuery(GuestUser.class);
-    Root<GuestUser> root =  query.from(GuestUser.class);
-    List<GuestUser> users = session.createQuery(query).getResultList();
+    CriteriaQuery<User> query = builder.createQuery(User.class);
+    Root<User> root =  query.from(User.class);
+    List<User> users = session.createQuery(query).getResultList();
     session.close();
     return users;
 
