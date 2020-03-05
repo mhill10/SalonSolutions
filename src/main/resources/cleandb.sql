@@ -1,11 +1,12 @@
-DROP TABLE IF EXISTS `reservationInfo`;
-
-DROP TABLE IF EXISTS `proServices`;
+DROP TABLE IF EXISTS `guestUser`;
 
 DROP TABLE IF EXISTS `proUser`;
 
+DROP TABLE IF EXISTS `reservationInfo`;
+
 DROP TABLE IF EXISTS `clientServices`;
 
+DROP TABLE IF EXISTS `proServices`;
 
 DROP TABLE IF EXISTS `allServices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
