@@ -2,6 +2,8 @@ package edu.matc.persistence;
 
 import edu.matc.entity.User;
 import edu.matc.persistence.UserDao;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import edu.matc.test.util.Database;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
 
@@ -64,19 +71,35 @@ class UserDaoTest {
         assertEquals(newFirstName, retrievedUser.getUserFirstName());
         assertEquals(newLastName, retrievedUser.getUserLastName());
     }
-/*
+
     @Test
     void insertUserSuccess() {
-        User newUser = new User(0, , "8-675309", 1971);
+        User newUser = new User();
+        newUser.setUserEmailAddress("paulawaite@madisoncollege.edu");
+        newUser.setUserPassword("samplePassword6");
+        newUser.setUserDisplayName("Paula Rocks");
+        newUser.setUserFirstName("Paula");
+        newUser.setUserLastName("Waite");
+        newUser.setUserStreetAddress("678 Easy Street");
+        newUser.setUserCity("Hayward");
+        newUser.setUserState("WI");
+        newUser.setUserZipCode("54853");
+        newUser.setUserProfilePic("smileyPaula.jpg");
         int id = dao.insert(newUser);
         assertNotEquals(0, id);
         User insertedUser = dao.getUserById(id);
-        assertEquals("Fear & Loathing in Las Vegas", insertedBook.getTitle());
-        assertEquals("Hunter Stockton Thompson", insertedBook.getAuthor());
-        assertEquals("8-675309", insertedBook.getIsbn());
-        assertEquals(1971, insertedBook.getPublicationYear());
+        assertEquals("paulawaite@madisoncollege.edu", insertedUser.getUserEmailAddress());
+        assertEquals("samplePassword6", insertedUser.getUserPassword());
+        assertEquals("Paula Rocks", insertedUser.getUserDisplayName());
+        assertEquals("Paula", insertedUser.getUserFirstName());
+        assertEquals("Waite", insertedUser.getUserLastName());
+        assertEquals("678 Easy Street", insertedUser.getUserStreetAddress());
+        assertEquals("Hayward", insertedUser.getUserCity());
+        assertEquals("WI", insertedUser.getUserState());
+        assertEquals("54853", insertedUser.getUserZipCode());
+        assertEquals("smileyPaula.jpg", insertedUser.getUserProfilePic());
     }
-*/
+
     @Test
     void deleteUserSuccess() {
         dao.delete(dao.getUserById(2));
@@ -88,13 +111,22 @@ class UserDaoTest {
         List<User> users = dao.getAllUsers();
         assertEquals(5, users.size());
     }
-/*
+
     @Test
     void getUserByPropertyEqualSuccess() {
+        List<User> users = dao.getByPropertyEqual("userLastName", "Bott");
+        assertEquals("Kacy", users.get(0).getUserFirstName());
+
     }
 
     @Test
     void getUserByPropertyLikeSuccess() {
+        List<User> users = dao.getByPropertyLike("userLastName", "H");
+        for (int userCounter = 0; userCounter < users.size(); userCounter++) {
+            assertEquals("Hill", users.get(userCounter).getUserLastName());
+        }
+
     }
-*/
+
+
 }
