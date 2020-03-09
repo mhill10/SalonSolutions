@@ -1,10 +1,11 @@
 package edu.matc.persistence;
 
-import com.mysql.cj.xdevapi.SessionFactory;
+import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 
 /**
  * This file provides a SessionFactory for use with DAOs using Hibernate
@@ -32,8 +33,7 @@ public class SessionFactoryProvider {
                 new StandardServiceRegistryBuilder().configure().build();
         Metadata metaData =
                 new MetadataSources(standardRegistry).getMetadataBuilder().build();
-        sessionFactory = (SessionFactory) metaData.getSessionFactoryBuilder().build();
-
+        sessionFactory = metaData.getSessionFactoryBuilder().build();
     }
 
     /**

@@ -23,6 +23,8 @@ public class User {
     private String userEmailAddress;
     @Column(name = "userPassword")
     private String userPassword;
+    @Column(name = "userDisplayName")
+    private String userDisplayName;
     @Column(name = "userFirstName")
     private String userFirstName;
     @Column(name = "userLastName")
@@ -33,7 +35,7 @@ public class User {
     private String userCity;
     @Column(name = "userState")
     private String userState;
-    @Column(name = "userZipCode")
+    @Column(name = "userZip")
     private String userZipCode;
     @Column(name = "userProfilePic")
     private String userProfilePic;
@@ -72,6 +74,14 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getUserDisplayName() {
+        return userDisplayName;
+    }
+
+    public void setUserDisplayName(String userDisplayName) {
+        this.userDisplayName = userDisplayName;
     }
 
     public String getUserFirstName() {

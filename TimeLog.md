@@ -15,3 +15,5 @@
 | 3/02/20 | Generated Peer Review Feedback for ZMarcus and KPalese Indie Projects | 1.5 |  |
 | 3/04/20 | Prepared for Indie Project Checkpoint #2 - Reevaluate MVP, per Peer Review and instructor Feedback, Determine and Implement Database Design, along with Log4J and Hibernate| 5 |  |
 | 3/04/20 | Implemented Indie Project Checkpoint #2 suggestions, per instructor feedback | 4.5 |  |
+| 3/09/20 | Finished implenting Indie Project Checkpoint #2 suggestions, per instructor feedback, updated timelog & readme.md & project plan to more accurately reflect road ahead, implement DAO for user entity | 4 |  |
+| 3/09/20 | Updated time log accordingly, finished implementing Week 6 AWS deployment of Indie Project | 1.5 |  |
