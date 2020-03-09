@@ -42,7 +42,7 @@ public class User {
 
 
     // Add logging to this class
-    private final Logger logger = LogManager.getLogger(this.getClass());
+    //private final Logger logger = LogManager.getLogger(this.getClass());
 
 
     /**

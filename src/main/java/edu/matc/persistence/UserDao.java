@@ -72,7 +72,7 @@ public class UserDao {
      *
      * @return All users
      */
-    public List<User> getAll() {
+    public List<User> getAllUsers() {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

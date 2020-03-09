@@ -2,6 +2,7 @@ package edu.matc.persistence;
 
 import edu.matc.entity.User;
 import edu.matc.persistence.UserDao;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,7 @@ class UserDaoTest {
      */
     @BeforeEach
     void testSetUpSuccess() {
+        dao = new UserDao();
         edu.matc.test.util.Database database = edu.matc.test.util.Database.getInstance();
         database.runSQL("cleandb.sql");
 
@@ -49,41 +51,44 @@ class UserDaoTest {
         assertEquals("smileyKacy.jpg", retrievedUser.getUserProfilePic());
 
     }
-/*
-    @Test
-    void saveOrUpdateSuccess() {
-        String newAuthor = "Paula Waite";
-        Book bookToUpdate = dao.getById(2);
-        bookToUpdate.setAuthor(newAuthor);
-        dao.saveOrUpdate(bookToUpdate);
-        Book retrievedBook = dao.getById(2);
-        assertEquals(newAuthor, retrievedBook.getAuthor());
-    }
 
     @Test
+    void saveOrUpdateSuccess() {
+        String newFirstName = "Paula";
+        String newLastName = "Waite";
+        User userToUpdate = dao.getUserById(2);
+        userToUpdate.setUserFirstName(newFirstName);
+        userToUpdate.setUserLastName(newLastName);
+        dao.saveOrUpdate(userToUpdate);
+        User retrievedUser = dao.getUserById(2);
+        assertEquals(newFirstName, retrievedUser.getUserFirstName());
+        assertEquals(newLastName, retrievedUser.getUserLastName());
+    }
+/*
+    @Test
     void insertUserSuccess() {
-        Book newBook = new Book("Fear & Loathing in Las Vegas", "Hunter Stockton Thompson", "8-675309", 1971);
-        int id = dao.insert(newBook);
+        User newUser = new User(0, , "8-675309", 1971);
+        int id = dao.insert(newUser);
         assertNotEquals(0, id);
-        Book insertedBook = dao.getById(id);
+        User insertedUser = dao.getUserById(id);
         assertEquals("Fear & Loathing in Las Vegas", insertedBook.getTitle());
         assertEquals("Hunter Stockton Thompson", insertedBook.getAuthor());
         assertEquals("8-675309", insertedBook.getIsbn());
         assertEquals(1971, insertedBook.getPublicationYear());
     }
-
+*/
     @Test
     void deleteUserSuccess() {
-        dao.delete(dao.getById(2));
-        assertNull(dao.getById(2));
+        dao.delete(dao.getUserById(2));
+        assertNull(dao.getUserById(2));
     }
 
     @Test
     void getAllUsersSuccess() {
-        List<Book> books = dao.getAllBooks();
-        assertEquals(3, books.size());
+        List<User> users = dao.getAllUsers();
+        assertEquals(5, users.size());
     }
-
+/*
     @Test
     void getUserByPropertyEqualSuccess() {
     }
@@ -91,6 +96,5 @@ class UserDaoTest {
     @Test
     void getUserByPropertyLikeSuccess() {
     }
-    */
-
+*/
 }
