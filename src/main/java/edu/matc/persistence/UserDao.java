@@ -6,7 +6,9 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.persistence.criteria.*;
 import java.util.List;
 
@@ -20,7 +22,9 @@ public class UserDao {
      */
     public User getUserById(int id) {
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         User user = session.get( User.class, id );
+        transaction.commit();
         session.close();
         return user;
     }
@@ -31,7 +35,9 @@ public class UserDao {
      */
     public void saveOrUpdate(User user) {
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.saveOrUpdate(user);
+        transaction.commit();
         session.close();
     }
 
@@ -69,11 +75,13 @@ public class UserDao {
     public List<User> getAll() {
 
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery( User.class );
         Root<User> root = query.from( User.class );
         List<User> users = session.createQuery( query ).getResultList();
+        transaction.commit();
 
         logger.debug("The list of users " + users);
         session.close();
@@ -83,11 +91,11 @@ public class UserDao {
 
     /**
      * Get user by property (exact match)
-     * sample usage: getByPropertyEqual("lastname", "Curry")
+     * sample usage: getByPropertyEqual("lastname", "Hill")
      */
     public List<User> getByPropertyEqual(String propertyName, String value) {
         Session session = sessionFactory.openSession();
-
+        Transaction transaction = session.beginTransaction();
         logger.debug("Searching for user with " + propertyName + " = " + value);
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -95,6 +103,7 @@ public class UserDao {
         Root<User> root = query.from( User.class );
         query.select(root).where(builder.equal(root.get(propertyName), value));
         List<User> users = session.createQuery( query ).getResultList();
+        transaction.commit();
 
         session.close();
         return users;
@@ -102,10 +111,11 @@ public class UserDao {
 
     /**
      * Get user by property (like)
-     * sample usage: getByPropertyLike("lastname", "C")
+     * sample usage: getByPropertyLike("lastname", "H")
      */
     public List<User> getByPropertyLike(String propertyName, String value) {
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
 
         logger.debug("Searching for user with {} = {}",  propertyName, value);
 
@@ -117,6 +127,7 @@ public class UserDao {
         query.where(builder.like(propertyPath, "%" + value + "%"));
 
         List<User> users = session.createQuery( query ).getResultList();
+        transaction.commit();
         session.close();
         return users;
     }

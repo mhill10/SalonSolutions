@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+
 /**
  * Provides access the database
  * Created on 8/31/16.
@@ -40,10 +41,10 @@ public class Database {
         try {
             properties.load (this.getClass().getResourceAsStream("/database.properties"));
         } catch (IOException ioe) {
-            System.out.println("Database.loadProperties()...Cannot load the properties file");
+            logger.error("Database.loadProperties()...Cannot load the properties file");
             ioe.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Database.loadProperties()..." + e);
+            logger.error("Database.loadProperties()..." + e);
             e.printStackTrace();
         }
 
@@ -95,7 +96,7 @@ public class Database {
             try {
                 connection.close();
             } catch (SQLException e) {
-                System.out.println("Cannot close connection" + e);
+               logger.error("Cannot close connection" + e);
             }
         }
 
@@ -106,27 +107,29 @@ public class Database {
         Statement stmt = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream inputStream = classloader.getResourceAsStream(sqlFile);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+        if (inputStream != null) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connect();
-            stmt = connection.createStatement();
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connect();
+                stmt = connection.createStatement();
 
-            while (true) {
-                String sql = br.readLine();
-                if (sql == null) {
-                    break;
+                while (true) {
+                    String sql = br.readLine();
+                    if (sql == null) {
+                        logger.error("The sql query: " + sql);
+                        break;
+                    }
+                    stmt.executeUpdate(sql);
                 }
-                stmt.executeUpdate(sql);
 
+            } catch (SQLException se) {
+                logger.error(se);
+            } catch (Exception e) {
+                logger.error(e);
+            } finally {
+                disconnect();
             }
-
-        } catch (SQLException se) {
-            logger.error(se);
-        } catch (Exception e) {
-            logger.error(e);
-        } finally {
-            disconnect();
         }
 
 
