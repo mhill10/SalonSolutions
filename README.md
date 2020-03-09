@@ -57,24 +57,23 @@ Rosy: https://www.rosysalonsoftware.com/?utm_source=Capterra&utm_medium=Salon&ut
 
 Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/aa9df7b72
 
-### Project Technologies/Techniques (Borrowed from Paula Waite's Indie Project Example, As Specifics TBD)
+### Project Technologies/Techniques
 * Security/Authentication
-* Java Mail API
-
   * Tomcat's JDBC Realm Authentication
   * Admin role: create/read/update/delete (crud) of all data
-  * User role: create trail, create trail report, edit data they have entered previously
-  * All: anyone can view trail information (no login)
+  * User role: create user (self as guest), create, edit, delete reservations, view previous and upcoming reservations, edit user profile data entered previously
+  * All: anyone can view services offered, pricing, available time slots (without requiring a login)
 * Database
   * MySQL
   * Store users and roles
-  * Store all data for the trails and reports
+  * Store all data for services offered with default timing and description, appointments/services/timing particular to each guest user, retail products, and invoicing for each appointment
 * ORM Framework
   * Hibernate 5
 * Dependency Management
   * Maven
 * Web Services consumed using Java
-  *TBD
+  *Google Calendar?
+  *Instagram/Google login/authentication?
 * CSS
   * Bootstrap or Materialize
 * Data Validation
@@ -85,7 +84,7 @@ Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/
 * Hosting
   * AWS
 * Independent Research Topic/s
-  * CI tools in AWS
+  * CI/CD tools in AWS
   * Materialize
   * Javascript ES6
 * git Hibernate Validation
