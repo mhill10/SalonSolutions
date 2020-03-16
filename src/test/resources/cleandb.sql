@@ -45,11 +45,11 @@ INSERT INTO `user` VALUES (0, 'ssmmhill@juno.com', 'samplePassword5', 'Nurse in 
 CREATE TABLE `role` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
                         `roleName` varchar(255) DEFAULT NULL,
-                        `userEmail` varchar(255) DEFAULT NULL,
+                        `userEmailAddress` varchar(255) DEFAULT NULL,
                         `userId` int(11) NOT NULL,
                         PRIMARY KEY (`id`),
                         CONSTRAINT `role_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE,
-                        CONSTRAINT `role_ibfk_2` FOREIGN KEY (`userEmail`) REFERENCES `user` (`userEmailAddress`) ON DELETE CASCADE
+                        CONSTRAINT `role_ibfk_2` FOREIGN KEY (`userEmailAddress`) REFERENCES `user` (`userEmailAddress`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
