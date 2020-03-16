@@ -1,0 +1,15 @@
+
+/*
+    author: mhill
+ */
+
+table, th, td {
+    border: 1px solid black;
+    background-color: white;
+    border-collapse: collapse;
+    padding: 1em;
+}
+
+#enterName {
+    font-size: 2.5em;
+}

@@ -18,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int userId;
+    private int id;
     @Column(name = "userEmailAddress")
     private String userEmailAddress;
     @Column(name = "userPassword")
@@ -52,12 +52,12 @@ public class User {
 
     }
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUserEmailAddress() {
@@ -143,7 +143,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "userId=" + id +
                 ", userEmailAddress='" + userEmailAddress + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userFirstName='" + userFirstName + '\'' +

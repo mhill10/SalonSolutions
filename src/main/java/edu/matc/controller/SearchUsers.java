@@ -17,16 +17,23 @@ import java.io.IOException;
  *
  */
 @WebServlet(
-        urlPatterns = {"/searchSalons"}
+        urlPatterns = {"/searchUsers"}
 )
 public class SearchUsers extends HttpServlet {
+
+    /**
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-/*
-        UserData userData  = new UserData();
+
         UserDao userDao  = new UserDao();
         if (req.getParameter("submit").equals("search")) {
-            req.setAttribute("users", userDao.getUserById(req.getParameter(("search"))));
+            req.setAttribute("users", userDao.getByPropertyLike("userLastName", req.getParameter(("userSearchTerm"))));
         } else {
             req.setAttribute("users", userDao.getAllUsers());
         }
@@ -35,6 +42,4 @@ public class SearchUsers extends HttpServlet {
     }
 
 
-*/
-    }
 }

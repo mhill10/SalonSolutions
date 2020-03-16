@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `role`;
 DROP TABLE IF EXISTS `guestUser`;
 DROP TABLE IF EXISTS `proUser`;
 DROP TABLE IF EXISTS `reservationInfo`;
@@ -15,11 +16,12 @@ CREATE TABLE `allServices` (
                                PRIMARY KEY (`serviceId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-                        `userId` int(11) NOT NULL AUTO_INCREMENT,
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
                         `userEmailAddress` varchar(255) DEFAULT NULL,
                         `userPassword` varchar(255) DEFAULT NULL,
                         `userDisplayName` varchar(255) DEFAULT NULL,
@@ -30,7 +32,7 @@ CREATE TABLE `user` (
                         `userState` varchar(2) DEFAULT NULL,
                         `userZip` varchar(5) DEFAULT NULL,
                         `userProfilePic` varchar(255) DEFAULT NULL,
-                        PRIMARY KEY (`userId`),
+                        PRIMARY KEY (`id`),
                         UNIQUE KEY `userEmailAddress` (`userEmailAddress`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,6 +41,21 @@ INSERT INTO `user` VALUES (0, 'salonkb@gmail.com', 'samplePassword2', 'The Handy
 INSERT INTO `user` VALUES (0, 'mjhill3@gmail.com', 'samplePassword3', 'Runner Freak', 'Michael', 'Hill', '1858 Mintwood Place, Apt 3', 'Washington', 'DC', '20009', 'smileyMikey.jpg');
 INSERT INTO `user` VALUES (0, 'shill@starkhomes.com', 'samplePassword4', 'Mr. Real Estate', 'Stanley', 'Hill', '444 Richie Rd', 'Verona', 'WI', '53711', 'smileyStan.jpg');
 INSERT INTO `user` VALUES (0, 'ssmmhill@juno.com', 'samplePassword5', 'Nurse in Charge', 'Sherry', 'Hill', '345 Sterling Dr', 'Oregon', 'WI', '53575', 'smileySherry.jpg');
+
+CREATE TABLE `role` (
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `roleName` varchar(255) DEFAULT NULL,
+                        `userEmail` varchar(255) DEFAULT NULL,
+                        `userId` int(11) NOT NULL,
+                        PRIMARY KEY (`id`),
+                        CONSTRAINT `role_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+                        CONSTRAINT `role_ibfk_2` FOREIGN KEY (`userEmail`) REFERENCES `user` (`userEmailAddress`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO `role` VALUES (0, 'admin', 'matthewbhill@gmail.com', 1);
+INSERT INTO `role` VALUES (0, 'guest', 'mjhill3@gmail.com', 3);
+
 DROP TABLE IF EXISTS `clientServices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -64,7 +81,7 @@ CREATE TABLE `reservationInfo` (
                                    PRIMARY KEY (`resId`),
                                    KEY `resSalonId` (`resSalonId`),
                                    KEY `resServiceId` (`resServiceId`),
-                                   CONSTRAINT `reservationinfo_ibfk_1` FOREIGN KEY (`resSalonId`) REFERENCES `user` (`userId`) ON DELETE CASCADE,
+                                   CONSTRAINT `reservationinfo_ibfk_1` FOREIGN KEY (`resSalonId`) REFERENCES `user` (`id`) ON DELETE CASCADE,
                                    CONSTRAINT `reservationinfo_ibfk_2` FOREIGN KEY (`resServiceId`) REFERENCES `clientServices` (`clientServiceId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
