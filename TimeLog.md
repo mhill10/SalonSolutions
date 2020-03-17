@@ -17,3 +17,5 @@
 | 3/04/20 | Implemented Indie Project Checkpoint #2 suggestions, per instructor feedback | 4.5 |  |
 | 3/09/20 | Finished implenting Indie Project Checkpoint #2 suggestions, per instructor feedback, updated timelog & readme.md & project plan to more accurately reflect road ahead, implement DAO for user entity | 4 |  |
 | 3/09/20 | Updated time log accordingly, finished implementing Week 6 AWS deployment of Indie Project | 1.5 |  |
+| 3/16/20 | Submitted feedback for Beth Scholze's Professional Dev Presentation, Completed Week 7 Work on Authentication both locally and for AWS, Completed Indie Project Checkpoint #3, researched CI/CD pipeline between AWS and Github | 4.5 |  |
+| 3/17/20 | Completed Custom Tag Extra Credit | 3.5 |  |
