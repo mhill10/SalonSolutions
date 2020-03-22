@@ -19,3 +19,4 @@
 | 3/09/20 | Updated time log accordingly, finished implementing Week 6 AWS deployment of Indie Project | 1.5 |  |
 | 3/16/20 | Submitted feedback for Beth Scholze's Professional Dev Presentation, Completed Week 7 Work on Authentication both locally and for AWS, Completed Indie Project Checkpoint #3, researched CI/CD pipeline between AWS and Github | 4.5 |  |
 | 3/17/20 | Completed Custom Tag Extra Credit | 3.5 |  |
+| 3/21/20 | Researched and implemented script to autostart Tomcat upon AWS Ubuntu instance reboot, thus avoiding need to run startup.sh manually.  Learned about VIM editor in the process.  Link to script implemented here: http://technoworkshop.in/automatically-start-tomcat-on-system-startup-in-ubuntu/ | 1.5 |  |
