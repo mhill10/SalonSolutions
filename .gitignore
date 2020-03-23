@@ -20,6 +20,9 @@
 .idea/gradle.xml
 .idea/libraries
 
+# GoogleCalendar API Credentials
+credentials.json
+
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
 
