@@ -20,3 +20,5 @@
 | 3/16/20 | Submitted feedback for Beth Scholze's Professional Dev Presentation, Completed Week 7 Work on Authentication both locally and for AWS, Completed Indie Project Checkpoint #3, researched CI/CD pipeline between AWS and Github | 4.5 |  |
 | 3/17/20 | Completed Custom Tag Extra Credit | 3.5 |  |
 | 3/21/20 | Researched and implemented script to autostart Tomcat upon AWS Ubuntu instance reboot, thus avoiding need to run startup.sh manually.  Learned about VIM editor in the process.  Link to script implemented here: http://technoworkshop.in/automatically-start-tomcat-on-system-startup-in-ubuntu/ | 1.5 |  |
+| 3/22/20 | Reviewed Weeks 2 & 3 materials to properly set up new Team Project and repository - Freeway Forecasts | 3.5 |  |
+| 3/23/20 | Completed Week 8 Activities and Exercise - Implemented initial steps for Google Calendar API in Indie Project | 4.5 |  |
