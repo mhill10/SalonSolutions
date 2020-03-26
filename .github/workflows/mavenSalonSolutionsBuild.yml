@@ -20,3 +20,5 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Deploy to Tomcat
+      run: curl -v -u ${{ secrets.TOMCAT_USERNAME_SALON_SOLUTIONS }}:${{ secrets.TOMCAT_PASSWORD_SALON_SOLUTIONS }} -T ${{ secrets.WAR_FILE_PATH }} ${{ secrets.AMAZON_EC2_INDIEREPO_ADDRESS }}
