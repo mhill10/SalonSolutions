@@ -4,6 +4,7 @@
 <html>
 <body>
 <h1>Welcome to My Salon Solutions!</h1>
+<h2>Your Styling Authority!</h2>
 <a href="search.jsp">Click here to search for users (admin only)</a>
 </body>
 </html>
