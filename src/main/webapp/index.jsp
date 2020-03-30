@@ -3,6 +3,7 @@
 <%@include file="head.jsp"%>
 <html>
 <body>
+<h1>Welcome to My Salon Solutions!</h1>
 <a href="search.jsp">Click here to search for users (admin only)</a>
 </body>
 </html>
