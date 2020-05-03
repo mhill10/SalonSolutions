@@ -54,12 +54,6 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.sakaiproject.genericdao/generic-dao -->
-    <dependency>
-      <groupId>org.sakaiproject.genericdao</groupId>
-      <artifactId>generic-dao</artifactId>
-      <version>${generic-dao-version}</version>
-    </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
