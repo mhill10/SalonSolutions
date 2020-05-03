@@ -53,3 +53,6 @@ fabric.properties
 
 # Database Properties:
 database.properties
+
+# Hibernate Properties:
+hibernate.cfg.xml

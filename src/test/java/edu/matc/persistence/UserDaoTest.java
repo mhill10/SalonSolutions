@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import edu.matc.test.util.Database;
@@ -26,7 +25,9 @@ import static org.junit.Assert.assertEquals;
  */
 class UserDaoTest {
 
-    UserDao dao;
+    GenericDao dao;
+    edu.matc.test.util.Database database;
+    List users;
 
 
     /**
@@ -34,10 +35,10 @@ class UserDaoTest {
      */
     @BeforeEach
     void testSetUpSuccess() {
-        dao = new UserDao();
-        edu.matc.test.util.Database database = edu.matc.test.util.Database.getInstance();
+        dao = new GenericDao<>(User.class);
+        database = edu.matc.test.util.Database.getInstance();
         database.runSQL("cleandb.sql");
-
+        users = dao.getAll();
     }
 
     /**
@@ -45,8 +46,8 @@ class UserDaoTest {
      */
     @Test
     void getUserByIdSuccess() {
-        User retrievedUser = dao.getUserById(2);
-        //assertEquals(2, retrievedUser.getUserId());
+        User retrievedUser = (User) dao.getById(2);
+        assertEquals(2, retrievedUser.getId());
         assertEquals("Kacy", retrievedUser.getUserFirstName());
         assertEquals("Bott", retrievedUser.getUserLastName());
         assertEquals("salonkb@gmail.com", retrievedUser.getUserEmailAddress());
@@ -63,11 +64,11 @@ class UserDaoTest {
     void saveOrUpdateSuccess() {
         String newFirstName = "Paula";
         String newLastName = "Waite";
-        User userToUpdate = dao.getUserById(2);
+        User userToUpdate = (User) dao.getById(2);
         userToUpdate.setUserFirstName(newFirstName);
         userToUpdate.setUserLastName(newLastName);
         dao.saveOrUpdate(userToUpdate);
-        User retrievedUser = dao.getUserById(2);
+        User retrievedUser = (User) dao.getById(2);
         assertEquals(newFirstName, retrievedUser.getUserFirstName());
         assertEquals(newLastName, retrievedUser.getUserLastName());
     }
@@ -87,7 +88,7 @@ class UserDaoTest {
         newUser.setUserProfilePic("smileyPaula.jpg");
         int id = dao.insert(newUser);
         assertNotEquals(0, id);
-        User insertedUser = dao.getUserById(id);
+        User insertedUser = (User) dao.getById(id);
         assertEquals("paulawaite@madisoncollege.edu", insertedUser.getUserEmailAddress());
         assertEquals("samplePassword6", insertedUser.getUserPassword());
         assertEquals("Paula Rocks", insertedUser.getUserDisplayName());
@@ -102,31 +103,32 @@ class UserDaoTest {
 
     @Test
     void deleteUserSuccess() {
-        dao.delete(dao.getUserById(2));
-        assertNull(dao.getUserById(2));
+        dao.delete(dao.getById(2));
+        assertNull(dao.getById(2));
     }
 
     @Test
     void getAllUsersSuccess() {
-        List<User> users = dao.getAllUsers();
+        assertNotEquals(0, users.size());
         assertEquals(5, users.size());
     }
 
     @Test
     void getUserByPropertyEqualSuccess() {
-        List<User> users = dao.getByPropertyEqual("userLastName", "Bott");
-        assertEquals("Kacy", users.get(0).getUserFirstName());
+        List searchedUserList = dao.findByPropertyEqual("userLastName", "Bott");
+        User searchedUser = (User) searchedUserList.get(0);
+        assertEquals("Bott", searchedUser.getUserLastName());
 
     }
 
-    @Test
-    void getUserByPropertyLikeSuccess() {
-        List<User> users = dao.getByPropertyLike("userLastName", "H");
-        for (int userCounter = 0; userCounter < users.size(); userCounter++) {
-            assertEquals("Hill", users.get(userCounter).getUserLastName());
-        }
-
-    }
+//    @Test
+//    void getUserByPropertyLikeSuccess() {
+//        List<User> users = dao.("userLastName", "H");
+//        for (int userCounter = 0; userCounter < users.size(); userCounter++) {
+//            assertEquals("Hill", users.get(userCounter).getUserLastName());
+//        }
+//
+//    }
 
 
 }

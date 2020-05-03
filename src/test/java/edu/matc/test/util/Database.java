@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.Properties;
 /**
  * Provides access to the database
@@ -35,7 +36,7 @@ public class Database {
 
     }
 
-    // TODO use properties loader (interface from adv java)
+
     private void loadProperties() {
         properties = new Properties();
         try {
@@ -94,7 +95,7 @@ public class Database {
 
         Statement stmt = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(classloader.getResourceAsStream(sqlFile)))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(classloader.getResourceAsStream(sqlFile))))) {
 
             connect();
             stmt = connection.createStatement();

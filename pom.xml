@@ -15,8 +15,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.release>11</maven.compiler.release>
     <junit.version>4.12</junit.version>
     <junit-vintage-version>4.12.0</junit-vintage-version>
@@ -31,6 +31,7 @@
     <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
     <jackson-version>2.10.0</jackson-version>
     <jersey-version>2.29.1</jersey-version>
+    <generic-dao-version>0.11.0</generic-dao-version>
   </properties>
 
   <dependencies>
@@ -52,6 +53,12 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.sakaiproject.genericdao/generic-dao -->
+    <dependency>
+      <groupId>org.sakaiproject.genericdao</groupId>
+      <artifactId>generic-dao</artifactId>
+      <version>${generic-dao-version}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>

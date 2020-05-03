@@ -156,7 +156,5 @@ public class User {
                 '}';
     }
 
-    //logger.info("Some message you want logged");
-    //logger.error("Some message you want logged", e);
 
 }
