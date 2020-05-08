@@ -5,6 +5,8 @@
 <body>
 <h1>Welcome to My Salon Solutions!</h1>
 <h2>Your Styling Authority!</h2>
-<a href="search.jsp">Click here to search for users (admin only)</a>
+<a class="button" href="search.jsp">Sign-Up To Become A Salon Guest</a>
+<a class="button" href="search.jsp">Already a Guest?  Log in</a>
+
 </body>
 </html>

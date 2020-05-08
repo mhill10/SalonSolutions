@@ -56,3 +56,6 @@ database.properties
 
 # Hibernate Properties:
 hibernate.cfg.xml
+
+# Context
+context.xml

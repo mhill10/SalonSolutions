@@ -1,5 +1,5 @@
 
-apply plugin: 'java'
+/*apply plugin: 'java'
 apply plugin: 'application'
 
 mainClassName = 'com.google.CalendarQuickstart'
@@ -20,7 +20,7 @@ apply plugin: 'maven'
 
 group = 'com.company.root'
 // artifactId is taken by default, from folder name
-version = '0.0.1-SNAPSHOT'
+/version = '0.0.1-SNAPSHOT'
 
 task writeNewPom << {
     pom {
@@ -35,4 +35,4 @@ task writeNewPom << {
             }
         }
     }.writeTo("pom.xml")
-}
+}*/

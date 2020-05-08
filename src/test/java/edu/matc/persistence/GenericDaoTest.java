@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
  * This is the UserDaoTest Class, which will test each method pertaining to the User Data Access Object
  * to ensure 100% successful functionality.
  */
-class UserDaoTest {
+class GenericDaoTest {
 
     GenericDao dao;
     edu.matc.test.util.Database database;
