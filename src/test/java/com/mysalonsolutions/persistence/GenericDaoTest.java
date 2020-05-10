@@ -1,19 +1,10 @@
-package edu.matc.persistence;
+package com.mysalonsolutions.persistence;
 
-import edu.matc.entity.User;
-import edu.matc.persistence.UserDao;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.junit.Before;
+import com.mysalonsolutions.entity.User;
+import com.mysalonsolutions.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
-
-import edu.matc.test.util.Database;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
@@ -26,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 class GenericDaoTest {
 
     GenericDao dao;
-    edu.matc.test.util.Database database;
+    Database database;
     List users;
 
 
@@ -36,7 +27,7 @@ class GenericDaoTest {
     @BeforeEach
     void testSetUpSuccess() {
         dao = new GenericDao<>(User.class);
-        database = edu.matc.test.util.Database.getInstance();
+        database = Database.getInstance();
         database.runSQL("cleandb.sql");
         users = dao.getAll();
     }

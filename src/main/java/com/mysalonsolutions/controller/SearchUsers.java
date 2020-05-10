@@ -1,7 +1,7 @@
-package edu.matc.controller;
+package com.mysalonsolutions.controller;
 
 
-import edu.matc.persistence.UserDao;
+import com.mysalonsolutions.persistence.UserDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

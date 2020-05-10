@@ -1,4 +1,4 @@
-package edu.matc.entity;
+package com.mysalonsolutions.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;

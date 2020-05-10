@@ -1,6 +1,6 @@
-package edu.matc.persistence;
+package com.mysalonsolutions.persistence;
 
-import edu.matc.entity.User;
+import com.mysalonsolutions.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
