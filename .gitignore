@@ -22,6 +22,11 @@
 
 # GoogleCalendar API Credentials
 credentials.json
+MySalonSolutions-cf4485c180f9.json
+mysalonsolutions-0c004414cf68.p12
+mysalonsolutions-ada809560bba.p12
+client_secret_270196565546-14a77enee8gbdtjshe0m5m0qdtac5o5m.apps.googleusercontent.com
+StoredCredential
 
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
@@ -59,3 +64,11 @@ hibernate.cfg.xml
 
 # Context
 context.xml
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+/src/main/resources/MySalonSolutions-cf4485c180f9.json
+/src/main/resources/credentials.json
