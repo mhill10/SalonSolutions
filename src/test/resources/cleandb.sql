@@ -27,6 +27,7 @@ CREATE TABLE `user` (
                         `userDisplayName` varchar(255) DEFAULT NULL,
                         `userFirstName` varchar(255) NOT NULL,
                         `userLastName` varchar(255) NOT NULL,
+                        `userPhone` varchar(12) NULL,
                         `userStreetAddress` varchar(255) DEFAULT NULL,
                         `userCity` varchar(255) DEFAULT NULL,
                         `userState` varchar(2) DEFAULT NULL,
@@ -36,11 +37,11 @@ CREATE TABLE `user` (
                         UNIQUE KEY `userEmailAddress` (`userEmailAddress`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO `user` VALUES (0, 'matthewbhill@gmail.com', 'samplePassword1', 'Mr. Cool Guy', 'Matthew', 'Hill', '6839 N. Old 92', 'Evansville', 'WI', '53536', 'smileyMatt.jpg');
-INSERT INTO `user` VALUES (0, 'salonkb@gmail.com', 'samplePassword2', 'The Handy Hairdresser', 'Kacy', 'Bott', '6839 N. Old 92', 'Evansville', 'WI', '53536', 'smileyKacy.jpg');
-INSERT INTO `user` VALUES (0, 'mjhill3@gmail.com', 'samplePassword3', 'Runner Freak', 'Michael', 'Hill', '1858 Mintwood Place, Apt 3', 'Washington', 'DC', '20009', 'smileyMikey.jpg');
-INSERT INTO `user` VALUES (0, 'shill@starkhomes.com', 'samplePassword4', 'Mr. Real Estate', 'Stanley', 'Hill', '444 Richie Rd', 'Verona', 'WI', '53711', 'smileyStan.jpg');
-INSERT INTO `user` VALUES (0, 'ssmmhill@juno.com', 'samplePassword5', 'Nurse in Charge', 'Sherry', 'Hill', '345 Sterling Dr', 'Oregon', 'WI', '53575', 'smileySherry.jpg');
+INSERT INTO `user` VALUES (0, 'thehandyhairdresser@gmail.com', 'samplePassword', 'The Handy Hairdresser', 'Kacy', 'Bott', '608-271-7270', '6839 N. Old 92', 'Evansville', 'WI', '53536', 'smileyKacy.jpg');
+INSERT INTO `user` VALUES (0, 'matthewbhill@gmail.com', 'samplePassword1', 'Mr. Cool Guy', 'Matthew', 'Hill', '608-219-8296', '6839 N. Old 92', 'Evansville', 'WI', '53536', 'smileyMatt.jpg');
+INSERT INTO `user` VALUES (0, 'mjhill3@gmail.com', 'samplePassword3', 'Runner Freak', 'Michael', 'Hill', '608-999-6666', '1858 Mintwood Place, Apt 3', 'Washington', 'DC', '20009', 'smileyMikey.jpg');
+INSERT INTO `user` VALUES (0, 'shill@starkhomes.com', 'samplePassword4', 'Mr. Real Estate', 'Stanley', '608-867-5309', 'Hill', '444 Richie Rd', 'Verona', 'WI', '53711', 'smileyStan.jpg');
+INSERT INTO `user` VALUES (0, 'ssmmhill@juno.com', 'samplePassword5', 'Nurse in Charge', 'Sherry', 'Hill', '608-555-4444', '345 Sterling Dr', 'Oregon', 'WI', '53575', 'smileySherry.jpg');
 
 CREATE TABLE `role` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -53,7 +54,8 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO `role` VALUES (0, 'admin', 'matthewbhill@gmail.com', 1);
+INSERT INTO `role` VALUES (0, 'admin', 'thehandyhairdresser@gmail.com', 1);
+INSERT INTO `role` VALUES (0, 'admin', 'matthewbhill@gmail.com', 2);
 INSERT INTO `role` VALUES (0, 'guest', 'mjhill3@gmail.com', 3);
 
 DROP TABLE IF EXISTS `clientServices`;

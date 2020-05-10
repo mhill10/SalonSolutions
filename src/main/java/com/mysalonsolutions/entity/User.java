@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * A class to represent a salon user
@@ -29,6 +30,8 @@ public class User {
     private String userFirstName;
     @Column(name = "userLastName")
     private String userLastName;
+    @Column(name = "userPhone")
+    private String userPhone;
     @Column(name = "userStreetAddress")
     private String userStreetAddress;
     @Column(name = "userCity")
@@ -41,7 +44,7 @@ public class User {
     private String userProfilePic;
 
 
-    // Add logging to this class
+//  Add logging to this class
     //private final Logger logger = LogManager.getLogger(this.getClass());
 
 
@@ -100,6 +103,14 @@ public class User {
         this.userLastName = userLastName;
     }
 
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
     public String getUserStreetAddress() {
         return userStreetAddress;
     }
@@ -156,5 +167,26 @@ public class User {
                 '}';
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userEmailAddress, userPassword, userFirstName, userLastName, userPhone, userEmailAddress);
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        User user = (User) obj;
+        return id == user.id &&
+                Objects.equals(userEmailAddress, user.userEmailAddress) &&
+                Objects.equals(userPassword, user.userPassword) &&
+                Objects.equals(userFirstName, user.userFirstName) &&
+                Objects.equals(userLastName, user.userLastName) &&
+                Objects.equals(userPhone, user.userPhone) &&
+                Objects.equals(userStreetAddress, user.userStreetAddress) &&
+                Objects.equals(userCity, user.userCity) &&
+                Objects.equals(userState, user.userState) &&
+                Objects.equals(userZipCode, user.userZipCode) &&
+                Objects.equals(userProfilePic, user.userProfilePic);
+    }
 }

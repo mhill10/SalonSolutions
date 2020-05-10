@@ -1,11 +1,9 @@
 package com.mysalonsolutions.persistence;
 
+import com.mysalonsolutions.entity.User;
 import org.hibernate.Session;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +46,7 @@ public class GenericDao<T> {
         Root<T> root = query.from(type);
         List<T> list = session.createQuery(query).getResultList();
         session.close();
+        logger.debug("The list of users " + list);
         return list;
 
     }
@@ -106,23 +105,28 @@ public class GenericDao<T> {
         session.close();
     }
 
-
-    /**
-     * Finds entities by one of its properties.
-
-     * @param propertyName the property name.
-     * @param value the value by which to find.
-     * @return
+    /** Get order by property (exact match)
+     * sample usage: getByPropertyEqual("lastName", "Curry")
+     *
+     * @param propertyName entity property to search by
+     * @param value value of the property to search for
+     * @return list of orders meeting the criteria search
      */
-    public List<T> findByPropertyEqual(String propertyName, Object value) {
+    public List<T> getByPropertyEqual(String propertyName, Object value) {
         Session session = getSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root = query.from(type);
-        query.select(root).where(builder.equal(root.get(propertyName),value));
 
-        return session.createQuery(query).getResultList();
+        logger.debug("Searching for entity with " + propertyName + " = " + value);
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery( type );
+        Root<T> root = query.from(type );
+        query.select(root).where(builder.equal(root.get(propertyName), value));
+        List<T> entities = session.createQuery( query ).getResultList();
+
+        session.close();
+        return entities;
     }
+
 
     /**
      * Finds entities by multiple properties.
@@ -145,6 +149,31 @@ public class GenericDao<T> {
         query.select(root).where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
 
         return session.createQuery(query).getResultList();
+    }
+
+    /**
+     * Get user by property (like)
+     * sample usage: getByPropertyLike("lastname", "C")
+     *
+     * @param propertyName the property name
+     * @param value        the value
+     * @return the by property like
+     */
+    public List<T> getByPropertyLike(String propertyName, String value) {
+        Session session = getSession();
+
+        logger.debug("Searching for entity with {} = {}",  propertyName, value);
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        Expression<String> propertyPath = root.get(propertyName);
+
+        query.where(builder.like(propertyPath, "%" + value + "%"));
+
+        List<T> entities = session.createQuery( query ).getResultList();
+        session.close();
+        return entities;
     }
 
 

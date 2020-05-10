@@ -1,8 +1,7 @@
 package com.mysalonsolutions.controller;
 
-
-import com.mysalonsolutions.persistence.UserDao;
-
+import com.mysalonsolutions.entity.User;
+import com.mysalonsolutions.persistence.GenericDao;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,15 +29,22 @@ public class SearchUsers extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        GenericDao dao = new GenericDao(User.class);
 
-        UserDao userDao  = new UserDao();
-        if (req.getParameter("submit").equals("search")) {
-            req.setAttribute("users", userDao.getByPropertyLike("userLastName", req.getParameter(("userSearchTerm"))));
-        } else {
-            req.setAttribute("users", userDao.getAllUsers());
-        }
+        req.setAttribute("users", dao.getAll());
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/results.jsp");
         dispatcher.forward(req, resp);
+
+
+//        GenericDao userDao  = new GenericDao(User.class);
+//        if (req.getParameter("submit").equals("search")) {
+//            req.setAttribute("users", userDao.getByPropertyLike("userLastName", req.getParameter(("userSearchTerm"))));
+//        } else {
+//            req.setAttribute("users", userDao.getAll());
+//        }
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("/results.jsp");
+//        dispatcher.forward(req, resp);
     }
 
 
