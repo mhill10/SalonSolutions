@@ -67,11 +67,11 @@ public class CalendarServiceTest {
         CalendarServiceTest newService = new CalendarServiceTest();
 
         List<Event> upcomingEvents = newService.getEvents();
-
-        System.out.println("Upcoming Events: " + upcomingEvents);
+//
+//        System.out.println("Upcoming Events: " + upcomingEvents);
 
 //        Working Delete Function - USE THIS!!!
-//        service.events().delete("thehandyhairdresser@gmail.com", "q0s794kk1v6om3j7t0guq9t9t4").execute();
+        service.events().delete("thehandyhairdresser@gmail.com", newEventId).execute();
 
         // UPDATE EVENT TEST
         Event updatedEvent = new Event();

@@ -10,21 +10,17 @@ that often only partially serve their needs.  Often, software that would best se
 not affordable from an individual or small-business standpoint. Furthermore, whatever software in
 this realm that is affordable does not fully account for the nuances of a Salon Owner/Stylist
 experience, especially in this recent rapid expansion of sole proprietorships (booth/chair
-rentals) that are taking the place of the traditional "Employer-Employee"/"Salon Owner with Many
-Hairstylists" Salon model.
+rentals) that are taking the place of the traditional "Employer-Employee"/"Salon Owner with Many Stylists" Salon model.
 
 For example, major players in this arena include Envision and Rosy, the desktop versions of which
 are not priced within reach for many small, one-person Salon operations. Furthermore, the slightly more
 affordable "Cloud" versions showcase lackluster performance and user experience for Stylists and
-Salon Salons alike, especially on mobile devices.  This is often because such solutions emanate from
-a "one size fits all" applications that are marketed to not only beauty salons, but spas, yoga studios,
+Salon Owners alike, especially on mobile devices.  This is often because such solutions emanate from
+a "one size fits all" approach that is marketed to not only beauty salons, but spas, yoga studios,
 fitness centers, massage parlors, and other business that, although similar in structure, are different
-enough to make the user experience feel "clunky" and under-served.  Moreover, feature requests from
-Salon Owners (users) are often ignored by such companies, including requests to better protect/anonymize
-Stylists for online booking via an optional "Nickname", rather than posting said Stylists' proper names
-to the web (which can lead to unwanted and potentially dangerous attention).
+enough to make the user experience for Salon stakeholders feel "clunky" and under-served.
 
-Lastly, these softwares, although they may help with scheduling and financial forecasting, are not
+Furthermore, these softwares, although they may help with scheduling and financial forecasting, are not
 structured in a way to maximally promote the financial goals of the Salon Owners/Stylists.  Ideally, such
 software would guide would-be Salon Salons to select appointment times that not only are convenient for said
 salon, but that also serve to strategically benefit the stylists earning potential that day (per preferences/goals
@@ -47,7 +43,7 @@ posts, so that a stylist might better advise on what to do about outgrowth, etc 
 appointment.  Seems that Facebook/Instagram/Google-YouTube integration of various levels of complexity might be
 particularly advantageous for this purpose, as well as to make logging-in and booking appointments easier for salons.
 
-I propose to create a web-based, Java 8 application that serves the purposes outlined above.
+I propose to create a web-based, Java 11 application that serves the purposes outlined above.
 
 
 Existing Examples Named Above:
@@ -59,37 +55,31 @@ Salon Solutions - Wireframe Drafts: https://app.moqups.com/izDhRK8VUK/view/page/
 
 ### Project Technologies/Techniques
 * Security/Authentication
-  * Tomcat's JDBC Realm Authentication
-  * Admin role: create/read/update/delete (crud) of all data
-  * User role: create user (self as guest), create, edit, delete reservations, view previous and upcoming reservations, edit user profile data entered previously
-  * All: anyone can view services offered, pricing, available time slots (without requiring a login)
+  * Tomcat's JDBC Realm Authentication - j_security_check
+  * Admin role: create/read/update/delete (CRUD) of all data
+  * User role: create user (self as guest), create, edit, delete reservations, view previous and upcoming reservations, edit certain user profile data
+  * All: anyone can view services offered, pricing, and About Us without requiring a login
 * Database
   * MySQL
   * Store users and roles
-  * Store all data for services offered with default timing and description, appointments/services/timing particular to each guest user, retail products, and invoicing for each appointment
+  * Store all data for services offered with default timing and description, log of reservations to be parsed by userId for individual guests or as one large log for admin
 * ORM Framework
   * Hibernate 5
 * Dependency Management
   * Maven
 * Web Services consumed using Java
-  *Google Calendar?
-  *Instagram/Google login/authentication?
+  * Google Calendar API via Service Account Authorized to Add/Edit/Delete reservations on private Google Calendar on behalf of Web Application
 * CSS
-  * Bootstrap or Materialize
+  * Bootstrap
 * Data Validation
-  * Bootstrap Validator for front end
   * Explore Hibernate's validation
 * Logging
-  * Configurable logging using Log4J2. In production, only errors will normally be logged, but logging at a debug level can be turned on to facilitate trouble-shooting.
+  * Configurable logging using Log4J2. In production, only errors will normally be logged, but logging at an info/debug level can be turned on to facilitate trouble-shooting.
 * Hosting
   * AWS
 * Independent Research Topic/s
-  * CI/CD tools in AWS
-  * Materialize
-  * Javascript ES6
-* git Hibernate Validation
-    * Hibernate Search
-  * Project Lombok to eliminate boilerplate code like getters/setters/equals
-  * Unit Testing
+* Continuous Integration - Continuous Deployment (CI-CD) using GitHub Actions to communicate to AWS EC2 Instance
+* Virtual Hosting to point custom domain name to AWS EC2 Instance
+* Unit Testing
     * JUnit tests to achieve 80%+ code coverage
-  * IDE: IntelliJ IDEA
+* IDE: IntelliJ IDEA
