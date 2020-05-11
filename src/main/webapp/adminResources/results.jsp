@@ -20,6 +20,7 @@
         <th>State: </th>
         <th>Zip Code: </th>
         <th>Phone Number: </th>
+        <th>Edit User: </th>
 <%--        <th>Profile Pic: </th>--%>
         </thead>
         <tbody>
@@ -36,7 +37,9 @@
                 <td>${user.userState}</td>
                 <td>${user.userZipCode}</td>
                 <td>${user.userPhone}</td>
-<%--                <td>${user.userProfilePic}</td>--%>
+                <td><form action="${pageContext.request.contextPath}/editUser">
+                    <input type="hidden" name="userId" value="${user.id}">
+                <input type="submit" name="submit" value="editUser" class="btn btn-primary"/></form>
             </tr>
         </c:forEach>
         </tbody>
