@@ -157,6 +157,7 @@ public class User {
                 ", userPassword='" + userPassword + '\'' +
                 ", userFirstName='" + userFirstName + '\'' +
                 ", userLastName='" + userLastName + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 ", userStreetAddress='" + userStreetAddress + '\'' +
                 ", userCity='" + userCity + '\'' +
                 ", userState='" + userState + '\'' +

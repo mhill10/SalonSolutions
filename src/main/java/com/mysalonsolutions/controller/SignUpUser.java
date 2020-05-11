@@ -57,7 +57,7 @@ public class SignUpUser extends HttpServlet {
             String chosenEmailAddress = req.getParameter("userEmailAddress");
             req.setAttribute("userEmailAddress", chosenEmailAddress);
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/createAccount.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/signUp.jsp");
             dispatcher.forward(req, resp);
 
         // If email is unique and passwords match, then register new user
@@ -76,14 +76,14 @@ public class SignUpUser extends HttpServlet {
             Role role = new com.mysalonsolutions.entity.Role();
             role.setUser(user);
             role.setRoleName(ROLE_NAME);
-            role.setUserEmailAddress(user.getUserEmailAddress());
+            role.setUserEmailAddress(req.getParameter("userEmailAddress"));
 
 
             userDao.insert(user);
             roleDao.insert(role);
 
             // Forward to registration success page
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/registrationSuccess.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/guestResources/registrationSuccess.jsp");
             dispatcher.forward(req, resp);
         }
 
