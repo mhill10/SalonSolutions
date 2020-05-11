@@ -1,5 +1,7 @@
-<%@include file="head.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="templates/head.jsp"%>
+<%@include file="templates/nav.jsp"%>
+<%@include file="templates/header.jsp"%>
 <html>
 <head>
     <title>Login Failed</title>
@@ -7,5 +9,5 @@
 <body>
 <h1>Login Failed...</h1>
 <h2>Please try again.</h2>
-</body>
-</html>
+
+<%@include file="templates/footer.jsp"%>

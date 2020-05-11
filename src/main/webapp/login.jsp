@@ -1,5 +1,7 @@
-<%@include file="head.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="templates/head.jsp"%>
+<%@include file="templates/nav.jsp"%>
+<%@include file="templates/header.jsp"%>
     <title>Login</title>
 </head>
 <body>
@@ -11,6 +13,4 @@
     </TABLE>
 </FORM>
 
-</body>
-</html>
-
+<%@include file="templates/footer.jsp"%>
