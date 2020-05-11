@@ -71,7 +71,7 @@ public class CalendarServiceTest {
 //        System.out.println("Upcoming Events: " + upcomingEvents);
 
 //        Working Delete Function - USE THIS!!!
-        service.events().delete("thehandyhairdresser@gmail.com", newEventId).execute();
+//        service.events().delete("thehandyhairdresser@gmail.com", newEventId).execute();
 
         // UPDATE EVENT TEST
         Event updatedEvent = new Event();

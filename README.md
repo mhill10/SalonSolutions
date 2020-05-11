@@ -3,6 +3,8 @@
 This repository will serve as the showcase for Matthew Hill's Enterprise Java Individual Project: Salon Solutions...
 a web-based platform for salon individual owners/hairstylists and their clientele.
 
+Video walkthrough demo (as of Monday, May 11, 2020): https://youtu.be/s-FcfY1Ctl0
+
 
 ### Problem Statement
 For decades, Salon Owners and Stylists have been at the mercy of scheduling and training softwares
