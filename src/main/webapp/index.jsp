@@ -5,7 +5,7 @@
 <div class="body">
 <section class="buttonChoices">
     <article>
-        <p id="feelFabulous">You Will Look and Feel <span class="cursive">Fantastic!</span></p>
+        <p id="feelFabulous">You Will Look and Feel <span class="cursive">Fabulous!</span></p>
         <a class="button" href="signUp.jsp">Sign-Up To Become A Salon Guest</a>
         <a class="button" href="adminResources/search.jsp">Already a Guest?  Log in</a>
     </article>
