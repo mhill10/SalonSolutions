@@ -7,7 +7,6 @@
 
 <section class="body">
 <h2 class="contentHeading">Salon Solutions Users: </h2>
-<div class="container">
 
     <table id="userTable">
         <thead>
@@ -43,7 +42,6 @@
         </tbody>
 
     </table>
-</div>
 </section>
 
 <%@include file="../templates/footer.jsp"%>

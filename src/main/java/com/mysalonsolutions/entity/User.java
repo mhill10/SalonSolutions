@@ -4,7 +4,9 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A class to represent a salon user
@@ -42,10 +44,6 @@ public class User {
     private String userZipCode;
     @Column(name = "userProfilePic")
     private String userProfilePic;
-
-
-//  Add logging to this class
-    //private final Logger logger = LogManager.getLogger(this.getClass());
 
 
     /**

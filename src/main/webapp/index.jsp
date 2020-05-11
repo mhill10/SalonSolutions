@@ -5,11 +5,14 @@
 <div class="body">
 <section class="buttonChoices">
     <article>
-        <p id="feelFabulous">We Can't Wait To Help You Look and Feel Fabulous!</p>
+        <p id="feelFabulous">You Will Look and Feel <span class="cursive">Fabulous!</span></p>
         <a class="button" href="signUp.jsp">Sign-Up To Become A Salon Guest</a>
         <a class="button" href="search.jsp">Already a Guest?  Log in</a>
     </article>
 </section>
+<div>
+    <br>
+</div>
 </div>
 
 <%@include file="templates/footer.jsp"%>
