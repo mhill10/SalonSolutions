@@ -5,7 +5,7 @@ Week 4
     Create project repository on GitHub
     Create project structure in intellij and push
     Write project plan
-    List technologies, versions and how they will be used... More TBD
+    List technologies, versions and how they will be used
     Document application flow in text and pictures.
     Problem statement, project plan, screen design and time log pushed to GitHub.
     Add link to list of indie projects in student repo.
@@ -39,15 +39,12 @@ Week 8
     Weekly journal entry (Time Log)
     Set up authentication locally
     Set up authentication on AWS
-    Add the Services, Retail Products, and User Appointments Tables, populate with data, (test, dev and prod dbs)
- Create db on AWS
+    Add the Services, and User Appointments Tables, populate with data, (test, dev and prod dbs)
+    Create db on AWS
     Deploy to AWS for first time
     Add the user entity (test, dev and prod dbs)
     Realize that these daos are repetitive. Refactor into a generic dao!
     Add update and delete functionality in jsp for user and role
-    Build the trail search jsp
-    Build the trail add/update/delete jsp
-    Integration with google login/instagram login api
      Add the role table
         Add the role entity
         Create the role dao
@@ -60,8 +57,7 @@ Week 8
     Create the appointment report dao unit tests
     Build the appointment report search jsp
     Build the appointment report crud jsps
-     Implement paging of search results
-        Code review
+    Code review
     Prepare for Checkpoint 3: Deployed to AWS, at least one JSP that displays data from the database is implemented.
 
 Week 9
@@ -69,7 +65,7 @@ Week 9
     Weekly journal entry
     Review and incorporate feedback from Checkpoint 3.
     Carefully review code for standards and best practices - use a code quality tool!
-        Add password reset/reminder functionality
+    Add password reset/reminder functionality
 
 Week 10
 
@@ -107,4 +103,4 @@ Week 16
 
     Weekly journal entry
     Final touches before code complete
-    Project Presentation 2:00 pm, Monday, May 11, 2020
+    Project Presentation 2:30 pm, Monday, May 11, 2020
