@@ -1,6 +1,6 @@
 package com.mysalonsolutions.entity;
 
-import com.google.gdata.data.DateTime;
+import com.google.api.client.util.DateTime;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;

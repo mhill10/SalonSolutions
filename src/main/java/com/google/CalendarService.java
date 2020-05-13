@@ -6,7 +6,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-
+import com.google.api.client.util.DateTime;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -16,7 +16,6 @@ import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.*;
 import com.google.common.io.Files;
-import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 import com.mysalonsolutions.entity.*;
@@ -142,15 +141,35 @@ public class CalendarService {
     }
 
 
-    public String createEvent(ClientServices clientServiceToSchedule, EventDateTime eventDateTime, Reservation reservationToMake) throws IOException {
+    /**
+     * Creates an event on Stylist's Google Calendar via the authentication method (configure()) above,
+     * using information specified by user and stylist to determine start and end times
+     *
+     * @param reservationToMake - the reservation details already present within MySQLDatabase to be parsed into Google Readable format for scheduling
+     * @return
+     * @throws IOException
+     */
+    public String createEvent(Reservation reservationToMake) throws IOException {
 
+        // Declare Local Variables
         Event event = new Event();
+        EventDateTime eventDateTime = new EventDateTime();
         Calendar service = null;
+
+        // Assign default values accordingly
         event.setLocation(DEFAULT_LOCATION);
+        eventDateTime.setTimeZone(DEFAULT_TIME_ZONE);
+        eventDateTime.setDateTime(reservationToMake.getResDateTime());
 
+        // Fetch User Info
         GenericDao userDao = new GenericDao(User.class);
-        User userToSchedule = (User) userDao.getById(clientServiceToSchedule.getClientId());
+        User userToSchedule = (User) userDao.getById(reservationToMake.getResSalonId());
 
+        // Fetch Info about the amount of time the service takes for this particular client
+        GenericDao clientServicesDao = new GenericDao(ClientServices.class);
+        ClientServices clientServiceToSchedule = (ClientServices) clientServicesDao.getById(reservationToMake.getResServiceId());
+
+        // Fetch Info about the Service - Its Name and Description
         GenericDao serviceDao = new GenericDao(Service.class);
         Service serviceToSchedule = (Service) serviceDao.getById(clientServiceToSchedule.getAllServiceId());
 
@@ -183,6 +202,12 @@ public class CalendarService {
     }
 
 
+    /**
+     * This method will fetch the next events on the calendar (determined by value of MAX_RESULTS constant)
+     *
+     * @return items - the list of Events coming up on the Stylist's Google calendar
+     * @throws IOException
+     */
     public List<Event> getEvents() throws IOException {
 
         Calendar service = new CalendarService().configure();
