@@ -155,7 +155,7 @@ CREATE TABLE `reservationInfo` (
 
 LOCK TABLES `reservationInfo` WRITE;
 /*!40000 ALTER TABLE `reservationInfo` DISABLE KEYS */;
-INSERT INTO `reservationInfo` VALUES (0, 2, 1, '2020-04-17 09:00:00', null),(0, 3, 2, '2020-04-17 10:00:00', null),(0, 6, 4, '2020-04-17 12:00:00', null);
+INSERT INTO `reservationInfo` VALUES (0, 2, 1, '2020-05-17 09:00:00', null),(0, 3, 2, '2020-05-17 10:00:00', null),(0, 6, 4, '2020-05-17 12:00:00', null);
 /*!40000 ALTER TABLE `reservationInfo` ENABLE KEYS */;
 UNLOCK TABLES;
 

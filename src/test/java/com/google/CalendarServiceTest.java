@@ -68,7 +68,7 @@ class CalendarServiceTest {
     void getEvents() throws IOException {
         List<Event> upcomingEvents = calendarService.getEvents();
         assertNotNull(upcomingEvents);
-        assertEquals(10, upcomingEvents.size());
+        assertEquals(9, upcomingEvents.size());
 
     }
 }

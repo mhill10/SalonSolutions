@@ -39,7 +39,7 @@ public class GenericReservationDaoTest {
 
         Reservation reservationToCompare = new Reservation();
         reservationToCompare.setResId(nextId);
-        DateTime resStartTime = DateTime.parseRfc3339("2020-04-17, 9:00:00");
+        DateTime resStartTime = DateTime.parseRfc3339("2020-04-17T09:00:00.000-05:00");
         reservationToCompare.setResDateTime(resStartTime.toString());
         reservationToCompare.setResSalonId(3);
         reservationToCompare.setResServiceId(3);
@@ -53,19 +53,18 @@ public class GenericReservationDaoTest {
     @Test
     void insertSuccess() {
         GenericDao userDao = new GenericDao(User.class);
-        User user = (User) userDao.getById(5);
+        User user = (User) userDao.getById(2);
 
-        GenericDao clientServicesDao = new GenericDao((ClientServices.class));
-        List <ClientServices> clientServicesToFetch =  clientServicesDao.getByPropertyLike("clientId", String.valueOf(user.getId()));
         ClientServices clientServiceToSchedule = new ClientServices();
-        clientServiceToSchedule = (ClientServices) clientServicesToFetch.get(2);
+        clientServiceToSchedule.setClientId(2);
+        clientServiceToSchedule.setClientServiceId(1);
 
         GenericDao reservationDao = new GenericDao((Reservation.class));
         Reservation reservationToInsert = new Reservation();
         reservationToInsert.setResSalonId(clientServiceToSchedule.getClientId());
         reservationToInsert.setResServiceId(clientServiceToSchedule.getClientServiceId());
 
-        DateTime resStartTime = DateTime.parseRfc3339("2020-04-17, 9:00:00");
+        String resStartTime = "2020-04-17 18:00:00";
         reservationToInsert.setResDateTime(resStartTime.toString());
 
         int id = reservationDao.insert(reservationToInsert);
@@ -93,7 +92,7 @@ public class GenericReservationDaoTest {
     @Test
     void getAllSuccess() {
         List<Reservation> reservationList = reservationDao.getAll();
-        assertEquals(5, reservationList.size());
+        assertEquals(3, reservationList.size());
     }
 
     /**
@@ -102,8 +101,8 @@ public class GenericReservationDaoTest {
     @Test
     void getByPropertyEqualSuccess() {
         List<Reservation> reservationListEqualled = reservationDao.getByPropertyEqual("resSalonId", String.valueOf(3));
-        assertEquals(2, reservationListEqualled.size());
-        assertEquals(1, reservationListEqualled.get(0).getResServiceId());
+        assertEquals(1, reservationListEqualled.size());
+        assertEquals(2, reservationListEqualled.get(0).getResServiceId());
     }
 
     /**
@@ -111,7 +110,7 @@ public class GenericReservationDaoTest {
      */
     @Test
     void getByPropertyLikeSuccess() {
-        List<Reservation> reservationListLike = reservationDao.getByPropertyLike("resDateTime", "2020-04-17, 9:00:00");
+        List<Reservation> reservationListLike = reservationDao.getByPropertyLike("resDateTime", "2020-04-17 09:00:00");
         assertEquals(1, reservationListLike.size());
         assertEquals(1, reservationListLike.get(0).getResServiceId());
     }
