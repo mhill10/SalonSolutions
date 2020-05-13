@@ -1,6 +1,5 @@
 package com.mysalonsolutions.entity;
 
-import com.google.DateTime;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;

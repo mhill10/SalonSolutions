@@ -1,6 +1,6 @@
 package com.mysalonsolutions.entity;
 
-import com.google.DateTime;
+import com.google.gdata.data.DateTime;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;
@@ -24,14 +24,15 @@ public class Reservation {
     @JoinColumn(name = "resSalonId",
             foreignKey = @ForeignKey(name = "reservationinfo_ibfk_1")
     )
-    private String resSalonId;
+    private int resSalonId;
 
     @JoinColumn(name = "resServiceId",
             foreignKey = @ForeignKey(name = "reservationinfo_ibfk_2")
     )
-    private String resServiceId;
+    private int resServiceId;
     @Column(name = "resDateTime")
     private DateTime resDateTime;
+
     @Column(name="googleConfirmation")
     private String googleConfirmation;
 
@@ -51,19 +52,19 @@ public class Reservation {
         this.resId = resId;
     }
 
-    public String getResSalonId() {
+    public int getResSalonId() {
         return resSalonId;
     }
 
-    public void setResSalonId(String resSalonId) {
+    public void setResSalonId(int resSalonId) {
         this.resSalonId = resSalonId;
     }
 
-    public String getResServiceId() {
+    public int getResServiceId() {
         return resServiceId;
     }
 
-    public void setResServiceId(String resServiceId) {
+    public void setResServiceId(int resServiceId) {
         this.resServiceId = resServiceId;
     }
 
@@ -89,8 +90,8 @@ public class Reservation {
         if (!(o instanceof Reservation)) return false;
         Reservation that = (Reservation) o;
         return getResId() == that.getResId() &&
-                getResSalonId().equals(that.getResSalonId()) &&
-                getResServiceId().equals(that.getResServiceId()) &&
+                getResSalonId() == that.getResSalonId() &&
+                getResServiceId() == that.getResServiceId() &&
                 getResDateTime().equals(that.getResDateTime()) &&
                 Objects.equals(getGoogleConfirmation(), that.getGoogleConfirmation());
     }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -18,14 +19,24 @@ import com.google.common.io.Files;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
-import com.mysalonsolutions.entity.Event_Id;
+import com.mysalonsolutions.entity.*;
+import com.mysalonsolutions.persistence.GenericDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import javax.ws.rs.client.Client;
 import java.util.Collections;
 import java.util.List;
 
 
 /**
- * @author Yaniv Inbar and Matthew Hill
+ * @author Yaniv Inbar (of Google) and Matthew Hill
+ *
+ * This Class will configure a Calendar Object with predetermined credentials for the Stylist's
+ * Google Calendar that is shared with the linked "Google Service Account" which the webapp
+ * Salon Solutions is authorized to use, in order to add and delete events from Stylist's
+ * private aforementioned Google Calendar.  This class will also be able to add and delete said
+ * events using same aforementioned credentials.
  */
 public class CalendarService {
 
@@ -58,7 +69,15 @@ public class CalendarService {
     /** Global instance of default Time Zone **/
     private static final String DEFAULT_TIME_ZONE = "America/Chicago";
 
+    /** Logger for this class **/
+    final Logger logger = LogManager.getLogger(this.getClass());
 
+
+    /**
+     * Configures a Calendar Object, loads credentials for service account, identifies Calendar to be modified,
+     *
+     * @return client - the client Calendar Object
+     */
     public  Calendar configure() {
         try {
             try {
@@ -69,7 +88,7 @@ public class CalendarService {
                 File file = new File(path);
                 String credentialsContent = Files.readFirstLine(file, Charset.defaultCharset());
                 if (credentialsContent.startsWith("Please")) {
-                    System.err.println(credentialsContent);
+                    logger.error(credentialsContent);
                     System.exit(1);
                 }
                 // service account credential (uncomment setServiceAccountUser for domain-wide delegation)
@@ -85,11 +104,11 @@ public class CalendarService {
                 Calendar client = new com.google.api.services.calendar.Calendar.Builder(
                         httpTransport, JSON_FACTORY, credential)
                         .setApplicationName(APPLICATION_NAME).build();
-                System.out.println("Client : " + client);
+               logger.debug("Client : " + client);
                 return client;
 
             } catch (IOException e) {
-                System.err.println(e.getMessage());
+                logger.error(e.getMessage());
             }
         } catch (Throwable t) {
             t.printStackTrace();
@@ -98,107 +117,69 @@ public class CalendarService {
         return null;
     }
 
-    public Event_Id generateEventId() {
 
-        return new Event_Id();
-    }
-
-    public EventDateTime generateEndTime(int userId, int serviceId, EventDateTime eventDateTime) {
+    /**
+     * Determines the time a service will end, based on start time criteria specified by guest,
+     * as well as time the service will likely take (specified by the Stylist)
+     *
+     * @param clientServiceToSchedule - the service requested by the guest to be scheduled
+     * @param eventStartDateTime - the time the guest desires service to begin
+     * @return - the ending time for the service
+     */
+    public EventDateTime generateEndTime(ClientServices clientServiceToSchedule, EventDateTime eventStartDateTime) {
         EventDateTime endTime = new EventDateTime();
         endTime.setTimeZone(DEFAULT_TIME_ZONE);
 
+        int visitDurationInMinutes = clientServiceToSchedule.getServiceDefaultStartDuration()
+                + clientServiceToSchedule.getServiceDefaultProcessDuration()
+                + clientServiceToSchedule.getServiceDefaultEndDuration();
 
 
+        DateTime endTimeToSchedule = new DateTime(eventStartDateTime.getDateTime().getValue() + (long) visitDurationInMinutes * 60L * 1000L);
+        endTime.setDateTime(endTimeToSchedule);
 
-
+        return endTime;
     }
 
 
-    public String createEvent(int userId, int serviceId, EventDateTime eventDateTime, String eventSummary, String eventDescription) {
+    public String createEvent(ClientServices clientServiceToSchedule, EventDateTime eventDateTime, Reservation reservationToMake) throws IOException {
 
         Event event = new Event();
-        Event_Id eventIdToInsert = generateEventId();
-        event.setId(String.valueOf(eventIdToInsert));
         Calendar service = null;
         event.setLocation(DEFAULT_LOCATION);
+
+        GenericDao userDao = new GenericDao(User.class);
+        User userToSchedule = (User) userDao.getById(clientServiceToSchedule.getClientId());
+
+        GenericDao serviceDao = new GenericDao(Service.class);
+        Service serviceToSchedule = (Service) serviceDao.getById(clientServiceToSchedule.getAllServiceId());
+
+        String eventSummary = userToSchedule.getUserFirstName() + ", " + userToSchedule.getUserLastName() + ": "
+                + serviceToSchedule.getServiceName();
+
+        // Set event Summary (visible in Google Calendar overview) and Set Description (visible in single Event view)
         event.setSummary(eventSummary);
-        event.setDescription(eventDescription);
+        event.setDescription(serviceToSchedule.getServiceDescription());
+
+        // Set start and end times
         event.setStart(eventDateTime);
+        event.setEnd(generateEndTime(clientServiceToSchedule, eventDateTime));
 
-        event.setEnd(generateEndTime(userId, serviceId, eventDateTime));
-
-        startCal.set(java.util.Calendar.YEAR, 2020);
-        startCal.set(java.util.Calendar.MONTH, 4);
-        startCal.set(java.util.Calendar.DATE, 17);
-        startCal.set(java.util.Calendar.HOUR_OF_DAY, 9);
-        startCal.set(java.util.Calendar.MINUTE, 0);
-        Date startDate = startCal.getTime();
-
-        java.util.Calendar endCal = java.util.Calendar.getInstance();
-        endCal.set(java.util.Calendar.YEAR, 2020);
-        endCal.set(java.util.Calendar.MONTH, 4);
-        endCal.set(java.util.Calendar.DATE, 17);
-        endCal.set(java.util.Calendar.HOUR_OF_DAY, 9);
-        endCal.set(java.util.Calendar.MINUTE, 45);
-        Date endDate = endCal.getTime();
-
-
-        DateTime start = new DateTime(startDate);
-        event.setStart(new EventDateTime().setDateTime(start));
-        DateTime end = new DateTime(endDate);
-        event.setEnd(new EventDateTime().setDateTime(end));
-
-
-
+        // Configure Calendar Service Object with credentials
         service = new CalendarService().configure();
         Event createdEvent = service.events().insert(CALENDAR_ID, event).execute();
 
+        // Receive Google Confirmation String
         String newEventId = createdEvent.getId();
+        logger.debug("Data is :" + newEventId + ", " + createdEvent.getSummary());
 
-        System.out.println("Data is :" + newEventId + ", " + createdEvent.getDescription());
+        // Save Google Confirmation String alongside Reservation in MySQL
+        GenericDao reservationDao = new GenericDao(Reservation.class);
+        Reservation scheduledReservation = reservationToMake;
+        scheduledReservation.setGoogleConfirmation(newEventId);
+        reservationDao.saveOrUpdate(scheduledReservation);
 
-        CalendarServiceTest newService = new CalendarServiceTest();
-
-        List<Event> upcomingEvents = newService.getEvents();
-//
-//        System.out.println("Upcoming Events: " + upcomingEvents);
-
-//        Working Delete Function - USE THIS!!!
-//        service.events().delete("thehandyhairdresser@gmail.com", newEventId).execute();
-
-        // UPDATE EVENT TEST
-        Event updatedEvent = new Event();
-
-        updatedEvent.setSummary("Update Test");
-        updatedEvent.setLocation("US");
-        updatedEvent.setDescription("Foil-Color-Style - Same Test Subject");
-
-        // set the number of days
-        java.util.Calendar updatedStartCal = java.util.Calendar.getInstance();
-        updatedStartCal.set(java.util.Calendar.YEAR, 2020);
-        updatedStartCal.set(java.util.Calendar.MONTH, 4);
-        updatedStartCal.set(java.util.Calendar.DATE, 17);
-        updatedStartCal.set(java.util.Calendar.HOUR_OF_DAY, 12);
-        updatedStartCal.set(java.util.Calendar.MINUTE, 0);
-        Date updatedStartDate = updatedStartCal.getTime();
-
-        java.util.Calendar updatedEndCal = java.util.Calendar.getInstance();
-        updatedEndCal.set(java.util.Calendar.YEAR, 2020);
-        updatedEndCal.set(java.util.Calendar.MONTH, 4);
-        updatedEndCal.set(java.util.Calendar.DATE, 17);
-        updatedEndCal.set(java.util.Calendar.HOUR_OF_DAY, 12);
-        updatedEndCal.set(java.util.Calendar.MINUTE, 45);
-        Date updatedEndDate = updatedEndCal.getTime();
-
-
-        DateTime updatedStart = new DateTime(updatedStartDate);
-        updatedEvent.setStart(new EventDateTime().setDateTime(updatedStart));
-        DateTime updatedEnd = new DateTime(updatedEndDate);
-        updatedEvent.setEnd(new EventDateTime().setDateTime(updatedEnd));
-        service.events().patch("thehandyhairdresser@gmail.com", newEventId, updatedEvent);
-
-
-        List<Event> updatedUpcomingEvents = newService.getEvents();
+        return newEventId;
     }
 
 
@@ -215,15 +196,15 @@ public class CalendarService {
                 .execute();
         List<Event> items = events.getItems();
         if (items.isEmpty()) {
-            System.out.println("No upcoming events found.");
+            logger.debug("No upcoming events found.");
         } else {
-            System.out.println("Upcoming events");
+            logger.debug("Upcoming events");
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
                 if (start == null) {
                     start = event.getStart().getDate();
                 }
-                System.out.printf("%s (%s)\n", event.getSummary(), start);
+                logger.debug("%s (%s)\n", event.getSummary(), start);
             }
 
         }

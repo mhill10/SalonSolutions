@@ -1,5 +1,6 @@
 package com.mysalonsolutions.persistence;
 
+import com.mysalonsolutions.entity.ClientServices;
 import com.mysalonsolutions.entity.Reservation;
 import com.mysalonsolutions.entity.Role;
 import com.mysalonsolutions.entity.User;
@@ -9,7 +10,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
+import com.google.gdata.data.DateTime;
 
+/**
+ * This class will verify whether the methods of the Reservation entity class function properly
+ */
 public class GenericReservationDaoTest {
 
     GenericDao reservationDao;
@@ -29,43 +34,66 @@ public class GenericReservationDaoTest {
         GenericDao reservationDao = new GenericDao(Reservation.class);
         Reservation reservationToFetch = (Reservation) reservationDao.getById(3);
         assertNotNull(reservationToFetch);
-        assertEquals(, reservationToFetch);
+
+        int nextId = reservationDao.getAll().size();
+
+        Reservation reservationToCompare = new Reservation();
+        reservationToCompare.setResId(nextId);
+        DateTime resStartTime = DateTime.parseDateTime("2020-04-17, 9:00:00");
+        reservationToCompare.setResDateTime(resStartTime);
+        reservationToCompare.setResSalonId(3);
+        reservationToCompare.setResServiceId(3);
+
+        assertTrue(reservationToCompare.equals(reservationToFetch));
     }
 
     /**
-     * Insert role successfully
+     * Insert reservation successfully
      */
     @Test
     void insertSuccess() {
         GenericDao userDao = new GenericDao(User.class);
-        User user = (User)userDao.getById(5);
-        Role newRole = new Role(user, "guest", user.getUserEmailAddress());
+        User user = (User) userDao.getById(5);
 
-        int id = reservationDao.insert(newRole);
-        Role insertedRole = (Role) reservationDao.getById(id);
+        GenericDao clientServicesDao = new GenericDao((ClientServices.class));
+        List <ClientServices> clientServicesToFetch =  clientServicesDao.getByPropertyLike("clientId", String.valueOf(user.getId()));
+        ClientServices clientServiceToSchedule = new ClientServices();
+        clientServiceToSchedule = (ClientServices) clientServicesToFetch.get(2);
+
+        GenericDao reservationDao = new GenericDao((Reservation.class));
+        Reservation reservationToInsert = new Reservation();
+        reservationToInsert.setResSalonId(clientServiceToSchedule.getClientId());
+        reservationToInsert.setResServiceId(clientServiceToSchedule.getClientServiceId());
+
+        DateTime resStartTime = DateTime.parseDateTime("2020-04-17, 9:00:00");
+        reservationToInsert.setResDateTime(resStartTime);
+
+        int id = reservationDao.insert(reservationToInsert);
+        Reservation insertedReservation = (Reservation) reservationDao.getById(id);
         assertNotEquals(0, id);
-        assertEquals(user, insertedRole.getUser());
+        assertTrue(reservationToInsert.equals(insertedReservation.getResSalonId()));
+
     }
 
     /**
-     * Delete a user's role successfully
+     * Delete a reservation successfully
      */
     @Test
     void deleteSuccess() {
-        Role role = (Role) reservationDao.getById(3);
+        Reservation reservationToDelete = (Reservation) reservationDao.getById(3);
 
-        reservationDao.delete(role);
+        reservationDao.delete(reservationToDelete);
 
         assertNull(reservationDao.getById(3));
     }
 
     /**
-     * Retrieve all roles successfully
+     * Retrieve all reservations successfully
      */
     @Test
     void getAllSuccess() {
-        List<Role> roleList = reservationDao.getAll();
-        assertEquals(3, roleList.size());
+        List<Reservation> reservationList = reservationDao.getAll();
+        assertEquals(5, reservationList.size());
     }
 
     /**
@@ -73,9 +101,9 @@ public class GenericReservationDaoTest {
      */
     @Test
     void getByPropertyEqualSuccess() {
-        List<Role> roles = reservationDao.getByPropertyEqual("roleName", "guest");
-        assertEquals(1, roles.size());
-        assertEquals(3, roles.get(0).getId());
+        List<Reservation> reservationListEqualled = reservationDao.getByPropertyEqual("resSalonId", String.valueOf(3));
+        assertEquals(2, reservationListEqualled.size());
+        assertEquals(1, reservationListEqualled.get(0).getResServiceId());
     }
 
     /**
@@ -83,9 +111,9 @@ public class GenericReservationDaoTest {
      */
     @Test
     void getByPropertyLikeSuccess() {
-        List<Role> roleList = reservationDao.getByPropertyLike("roleName", "a");
-        assertEquals(2, roleList.size());
-        assertEquals(1, roleList.get(0).getId());
+        List<Reservation> reservationListLike = reservationDao.getByPropertyLike("resDateTime", "2020-04-17, 9:00:00");
+        assertEquals(1, reservationListLike.size());
+        assertEquals(1, reservationListLike.get(0).getResServiceId());
     }
 }
 

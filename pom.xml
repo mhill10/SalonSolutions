@@ -20,6 +20,7 @@
     <google-api-services-plus-version>v1-rev530-1.23.0</google-api-services-plus-version>
     <google-apis-version>v3-rev20200428-1.30.9</google-apis-version>
     <google-api-services-sql-version>v1beta3-rev25-1.19.0</google-api-services-sql-version>
+    <gdata-core-version>1.47.1</gdata-core-version>
     <hibernate-version>5.4.4.Final</hibernate-version>
     <jackson-version>2.10.0</jackson-version>
     <javax.version>7.0</javax.version>
@@ -233,6 +234,14 @@
       <artifactId>google-api-services-plus</artifactId>
       <version>${google-api-services-plus-version}</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.gdata/core -->
+    <dependency>
+      <groupId>com.google.gdata</groupId>
+      <artifactId>core</artifactId>
+      <version>${gdata-core-version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>
