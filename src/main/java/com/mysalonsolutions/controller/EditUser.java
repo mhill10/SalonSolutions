@@ -14,7 +14,7 @@ import static java.lang.Integer.parseInt;
 
 
 /**
- * a simple servlet to search for salon users
+ * a simple servlet to edit salon users
  * @author mhill
  *
  */
@@ -24,9 +24,10 @@ import static java.lang.Integer.parseInt;
 class EditUser extends HttpServlet {
 
     /**
+     * This method determines which user was selected to be edited and forwards the request accordingly
      *
-     * @param req
-     * @param resp
+     * @param req - the request to edit a specific user
+     * @param resp - the result of the request
      * @throws ServletException
      * @throws IOException
      */

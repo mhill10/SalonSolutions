@@ -28,7 +28,7 @@ public class GenericRoleDaoTest {
     void getByIdSuccess() {
         GenericDao userDao = new GenericDao(User.class);
         User user = (User) userDao.getById(3);
-        Role role = (Role) roleDao.getById(3);
+        Role role = (Role) roleDao.getById(2);
         assertNotNull(role);
         assertEquals(user, role.getUser());
     }
@@ -66,7 +66,7 @@ public class GenericRoleDaoTest {
     @Test
     void getAllSuccess() {
         List<Role> roleList = roleDao.getAll();
-        assertEquals(3, roleList.size());
+        assertEquals(7, roleList.size());
     }
 
     /**
@@ -75,8 +75,8 @@ public class GenericRoleDaoTest {
     @Test
     void getByPropertyEqualSuccess() {
         List<Role> roles = roleDao.getByPropertyEqual("roleName", "guest");
-        assertEquals(1, roles.size());
-        assertEquals(3, roles.get(0).getId());
+        assertEquals(6, roles.size());
+        assertEquals(2, roles.get(0).getId());
     }
 
     /**
@@ -85,7 +85,7 @@ public class GenericRoleDaoTest {
     @Test
     void getByPropertyLikeSuccess() {
         List<Role> roleList = roleDao.getByPropertyLike("roleName", "a");
-        assertEquals(2, roleList.size());
+        assertEquals(1, roleList.size());
         assertEquals(1, roleList.get(0).getId());
     }
 }

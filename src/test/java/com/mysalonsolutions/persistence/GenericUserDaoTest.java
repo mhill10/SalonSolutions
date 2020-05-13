@@ -38,8 +38,8 @@ class GenericUserDaoTest {
     void getUserByIdSuccess() {
         User retrievedUser = (User) dao.getById(2);
         assertNotNull(retrievedUser);
-        assertEquals("matthewbhill@gmail.com", retrievedUser.getUserEmailAddress());
-        assertEquals("samplePassword1", retrievedUser.getUserPassword());
+        assertEquals("salonkb@gmail.com", retrievedUser.getUserEmailAddress());
+        assertEquals("samplePassword2", retrievedUser.getUserPassword());
     }
 
     @Test
@@ -84,21 +84,21 @@ class GenericUserDaoTest {
     void getAllUsersSuccess() {
         users = dao.getAll();
         assertNotEquals(0, users.size());
-        assertEquals(5, users.size());
+        assertEquals(10, users.size());
     }
 
     @Test
     void getUserByPropertyEqualSuccess() {
         users = dao.getByPropertyEqual("userLastName", "Bott");
         assertEquals(1, users.size());
-        assertEquals(1, users.get(0).getId());
-        assertEquals(dao.getById(1), users.get(0));
+        assertEquals(2, users.get(0).getId());
+        assertEquals(dao.getById(2), users.get(0));
 
     }
 
     @Test
     void getUserByPropertyLikeSuccess() {
-        users = dao.getByPropertyLike("userLastName", "H");
+        users = dao.getByPropertyLike("userLastName", "H*");
         for (int userCounter = 0; userCounter < users.size(); userCounter++) {
             assertEquals("Hill", users.get(userCounter).getUserLastName());
         }

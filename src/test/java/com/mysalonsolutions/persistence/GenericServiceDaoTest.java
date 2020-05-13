@@ -20,7 +20,7 @@ public class GenericServiceDaoTest {
     void setUp() {
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
-        serviceDao = new GenericDao<>(Service.class);
+        serviceDao = new GenericDao(Service.class);
     }
 
     /**
@@ -30,7 +30,7 @@ public class GenericServiceDaoTest {
     void getByIdSuccess() {
         Service serviceFetched = (Service) serviceDao.getById(1);
         assertNotNull(serviceFetched);
-        assertEquals("Haircut", serviceFetched);
+        assertEquals("Haircut", serviceFetched.getServiceName());
     }
 
     /**

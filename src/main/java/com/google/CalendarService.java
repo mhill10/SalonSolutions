@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
 import com.google.api.client.util.DateTime;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.HttpTransport;
@@ -22,8 +20,6 @@ import com.mysalonsolutions.entity.*;
 import com.mysalonsolutions.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.ws.rs.client.Client;
 import java.util.Collections;
 import java.util.List;
 

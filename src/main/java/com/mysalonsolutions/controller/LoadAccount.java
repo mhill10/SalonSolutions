@@ -13,7 +13,8 @@ import java.io.IOException;
 
 
 /**
- * a simple servlet to search for salon users
+ * a simple servlet to load the account for a specific user
+ *
  * @author mhill
  *
  */
@@ -23,6 +24,7 @@ import java.io.IOException;
 public class LoadAccount extends HttpServlet {
 
     /**
+     *
      *
      * @param req
      * @param resp

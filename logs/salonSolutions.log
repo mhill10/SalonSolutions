@@ -164,3 +164,36 @@
 [ERROR] 2020-05-10 15:47:49.947 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'userPhone' at row 1
 [ERROR] 2020-05-10 15:47:50.058 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'userPhone' at row 1
 [ERROR] 2020-05-10 15:47:50.165 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'userPhone' at row 1
+[ERROR] 2020-05-13 11:00:29.585 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:00:31.103 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:00:31.137 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:00:31.307 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:00:31.339 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:00:31.375 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:00:31.424 [main] Database - java.sql.SQLException: Cannot drop table 'allservices' referenced by a foreign key constraint 'proservices_ibfk_1' on table 'clientServices'.
+[ERROR] 2020-05-13 11:01:55.775 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:01:57.081 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:01:57.147 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:01:57.328 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:01:57.392 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:01:57.461 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:01:57.545 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:34.633 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:36.046 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:36.114 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:36.288 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:36.364 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:36.432 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:02:36.523 [main] Database - java.sql.SQLException: Failed to open the referenced table 'user'
+[ERROR] 2020-05-13 11:17:04.615 [main] Database - java.sql.SQLException: Failed to add the foreign key constraint. Missing column 'serviceId' for constraint 'proservices_ibfk_1' in the referenced table 'allservices'
+[ERROR] 2020-05-13 11:17:05.894 [main] Database - java.sql.SQLException: Failed to add the foreign key constraint. Missing column 'serviceId' for constraint 'proservices_ibfk_1' in the referenced table 'allservices'
+[ERROR] 2020-05-13 11:17:05.981 [main] Database - java.sql.SQLException: Failed to add the foreign key constraint. Missing column 'serviceId' for constraint 'proservices_ibfk_1' in the referenced table 'allservices'
+[ERROR] 2020-05-13 11:17:06.086 [main] Database - java.sql.SQLException: Failed to add the foreign key constraint. Missing column 'serviceId' for constraint 'proservices_ibfk_1' in the referenced table 'allservices'
+[ERROR] 2020-05-13 11:17:06.174 [main] Database - java.sql.SQLException: Failed to add the foreign key constraint. Missing column 'serviceId' for constraint 'proservices_ibfk_1' in the referenced table 'allservices'
+[ERROR] 2020-05-13 11:17:06.253 [main] Database - java.sql.SQLException: Failed to add the foreign key constraint. Missing column 'serviceId' for constraint 'proservices_ibfk_1' in the referenced table 'allservices'
+[ERROR] 2020-05-13 11:34:33.864 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+[ERROR] 2020-05-13 11:34:35.283 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+[ERROR] 2020-05-13 11:34:35.495 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+[ERROR] 2020-05-13 11:34:35.600 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+[ERROR] 2020-05-13 11:34:35.721 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+[ERROR] 2020-05-13 11:34:35.820 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'

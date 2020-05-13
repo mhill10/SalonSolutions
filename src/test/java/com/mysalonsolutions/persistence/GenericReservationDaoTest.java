@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
-import com.google.gdata.data.DateTime;
+import com.google.api.client.util.DateTime;
 
 /**
  * This class will verify whether the methods of the Reservation entity class function properly
@@ -39,7 +39,7 @@ public class GenericReservationDaoTest {
 
         Reservation reservationToCompare = new Reservation();
         reservationToCompare.setResId(nextId);
-        DateTime resStartTime = DateTime.parseDateTime("2020-04-17, 9:00:00");
+        DateTime resStartTime = DateTime.parseRfc3339("2020-04-17, 9:00:00");
         reservationToCompare.setResDateTime(resStartTime);
         reservationToCompare.setResSalonId(3);
         reservationToCompare.setResServiceId(3);
@@ -65,7 +65,7 @@ public class GenericReservationDaoTest {
         reservationToInsert.setResSalonId(clientServiceToSchedule.getClientId());
         reservationToInsert.setResServiceId(clientServiceToSchedule.getClientServiceId());
 
-        DateTime resStartTime = DateTime.parseDateTime("2020-04-17, 9:00:00");
+        DateTime resStartTime = DateTime.parseRfc3339("2020-04-17, 9:00:00");
         reservationToInsert.setResDateTime(resStartTime);
 
         int id = reservationDao.insert(reservationToInsert);
