@@ -30,8 +30,9 @@ public class Reservation {
             foreignKey = @ForeignKey(name = "reservationinfo_ibfk_2")
     )
     private int resServiceId;
+
     @Column(name = "resDateTime")
-    private DateTime resDateTime;
+    private String resDateTime;
 
     @Column(name="googleConfirmation")
     private String googleConfirmation;
@@ -68,11 +69,11 @@ public class Reservation {
         this.resServiceId = resServiceId;
     }
 
-    public DateTime getResDateTime() {
+    public String getResDateTime() {
         return resDateTime;
     }
 
-    public void setResDateTime(DateTime resDateTime) {
+    public void setResDateTime(String resDateTime) {
         this.resDateTime = resDateTime;
     }
 

@@ -40,7 +40,7 @@ public class GenericReservationDaoTest {
         Reservation reservationToCompare = new Reservation();
         reservationToCompare.setResId(nextId);
         DateTime resStartTime = DateTime.parseRfc3339("2020-04-17, 9:00:00");
-        reservationToCompare.setResDateTime(resStartTime);
+        reservationToCompare.setResDateTime(resStartTime.toString());
         reservationToCompare.setResSalonId(3);
         reservationToCompare.setResServiceId(3);
 
@@ -66,7 +66,7 @@ public class GenericReservationDaoTest {
         reservationToInsert.setResServiceId(clientServiceToSchedule.getClientServiceId());
 
         DateTime resStartTime = DateTime.parseRfc3339("2020-04-17, 9:00:00");
-        reservationToInsert.setResDateTime(resStartTime);
+        reservationToInsert.setResDateTime(resStartTime.toString());
 
         int id = reservationDao.insert(reservationToInsert);
         Reservation insertedReservation = (Reservation) reservationDao.getById(id);

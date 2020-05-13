@@ -55,7 +55,12 @@ class CalendarServiceTest {
     }
 
     @Test
-    void createEvent() {
+    void createEvent() throws IOException {
+        GenericDao reservationDao = new GenericDao(Reservation.class);
+        reservation = (Reservation) reservationDao.getById(1);
+
+        String reservationId = calendarService.createEvent(reservation);
+        assertNotNull(reservationId);
 
     }
 

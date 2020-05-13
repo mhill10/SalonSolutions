@@ -197,3 +197,7 @@
 [ERROR] 2020-05-13 11:34:35.600 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
 [ERROR] 2020-05-13 11:34:35.721 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
 [ERROR] 2020-05-13 11:34:35.820 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+[ERROR] 2020-05-13 13:22:26.680 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2020-04-17T09:00:00-05:00' for column 'resDateTime' at row 1
+[ERROR] 2020-05-13 13:22:27.087 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2020-04-17T09:00:00-05:00' for column 'resDateTime' at row 1
+[ERROR] 2020-05-13 13:22:28.537 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2020-04-17T09:00:00-05:00' for column 'resDateTime' at row 1
+[ERROR] 2020-05-13 13:22:28.663 [main] Database - com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2020-04-17T09:00:00-05:00' for column 'resDateTime' at row 1

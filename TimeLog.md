@@ -39,6 +39,6 @@
 | 5/09/20 | Fully Implements GenericDao and removes all references/reliance on UserDao | 4.5 |  |
 | 5/10/20 | Created many necessary JSPs, controller classes, and began implementing Google Calendar API credentials/ requests.  MANY struggles with OAuth2.0 | 12.5 |  |
 | 5/11/20 | Added styling, additional entities and test classes | 13 |  |
-| 5/12/20 | Added additional testing capacity | 5 |
+| 5/12/20 | Added additional testing capacity.  Presented Project to Classmates | 5 |
 | 5/13/20 | Deleted unnecessary classes, added javadoc and fixed time discrepancies and additional testing | 8 |  |
 | 5/13/20 | Project submitted for grading |  |  |

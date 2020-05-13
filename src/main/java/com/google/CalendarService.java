@@ -67,6 +67,9 @@ public class CalendarService {
     /** Logger for this class **/
     final Logger logger = LogManager.getLogger(this.getClass());
 
+    /** Global value to append, given mySql and Google Date Time discrepancy **/
+    private static final String TIME_ZONE_OFFSET_TO_APPEND = ".000-05:00";
+
 
     /**
      * Configures a Calendar Object, loads credentials for service account, identifies Calendar to be modified,
@@ -136,6 +139,25 @@ public class CalendarService {
         return endTime;
     }
 
+    /**
+     * Given the discrepancy between java.util.DateTime (which would also populate in MySql),
+     * the field in MySql Database is now represented by a String that this method will properly
+     * format into a Google-preferred DateTime object
+     *
+     * @param dateTimeFromDB - the String from MySql Database
+     * @return - the properly formatted DateTime object
+     */
+    public DateTime convertDateTime(String dateTimeFromDB) {
+        // Attempting to convert this: "2020-04-17 09:45:00" to this: "2020-04-17T09:45:00.000-05:00"
+
+        char c = 'T';
+
+        String dateTimeToConvert = dateTimeFromDB.replace(' ', c);
+        dateTimeToConvert += TIME_ZONE_OFFSET_TO_APPEND;
+
+        return new DateTime(dateTimeToConvert);
+    }
+
 
     /**
      * Creates an event on Stylist's Google Calendar via the authentication method (configure()) above,
@@ -155,7 +177,7 @@ public class CalendarService {
         // Assign default values accordingly
         event.setLocation(DEFAULT_LOCATION);
         eventDateTime.setTimeZone(DEFAULT_TIME_ZONE);
-        eventDateTime.setDateTime(reservationToMake.getResDateTime());
+        eventDateTime.setDateTime(convertDateTime(reservationToMake.getResDateTime()));
 
         // Fetch User Info
         GenericDao userDao = new GenericDao(User.class);
