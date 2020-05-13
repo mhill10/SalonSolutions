@@ -22,15 +22,14 @@ public class GenericReservationDaoTest {
     }
 
     /**
-     * Fetch role of user successfully
+     * Fetch Reservation successfully
      */
     @Test
     void getByIdSuccess() {
-        GenericDao userDao = new GenericDao(User.class);
-        User user = (User) userDao.getById(3);
-        Role role = (Role) reservationDao.getById(3);
-        assertNotNull(role);
-        assertEquals(user, role.getUser());
+        GenericDao reservationDao = new GenericDao(Reservation.class);
+        Reservation reservationToFetch = (Reservation) reservationDao.getById(3);
+        assertNotNull(reservationToFetch);
+        assertEquals(, reservationToFetch);
     }
 
     /**
